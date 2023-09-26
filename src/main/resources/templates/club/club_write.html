@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* 버튼 이쁘게 만들어 줘   */
+
+
+    </style>
+</head>
+<body>
+<form action="/club/write" method="post" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header1">
+            <!-- 게시판을 누를시 첫 페이지인 index.html로 이동 -->
+            <h1>게시판</h1>
+        </div>
+
+        <div class="card-write">
+
+            <div class="title">
+                제목: <label>
+                <input type="text"  name="clubboard_title" style="width:400px;" placeholder="제목을 입력하세요." required>
+                    </label>
+                <div id="titleError"></div>
+            </div>
+
+            <div class="ii">
+                이름: <label>
+                <input type="text"  name="clubboard_emp_name" style="width:400px;" placeholder="제목을 입력하세요." required>
+            </label>
+
+            </div>
+
+            <div class="msg">
+                내용:<br />
+                <label>
+                    <textarea name="clubboard_sub" rows="5" cols="30" placeholder="내용을 입력하세요." required></textarea>
+                </label>
+                <div id="clubboard_subError"></div>
+            </div>
+
+            <div class="files">
+                파일: <label>
+                <input type="file" name="file">
+            </label>
+            </div>
+
+
+        </div>
+        <!--<div class="authInfoData">
+            <input type="hidden" name="nickname" value="${authInfo.nickname}" /> &lt;!&ndash; 세션에서 가져온 사용자 정보를 hidden 필드에 할당 &ndash;&gt;
+            <input type="hidden" name="id" value="${authInfo.id}" /> &lt;!&ndash; 세션에서 가져온 사용자 정보를 hidden 필드에 할당 &ndash;&gt;
+        </div>-->
+
+        <button type="submit"> 업로드 -</button>
+
+    </div>
+</form>
+</body>
+</html>

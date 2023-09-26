@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<body>
+<div th:each="dto : ${dto}">
+
+    <p>동아리명 : [[${dto.clubboard_title}]]</p>
+    <hr>
+    <div style="text-align: left;">
+        개설자 : [[${dto.clubboard_emp_name}]]<br> 작성시간: [[${#dates.format(dto.clubboard_regdate, 'yyyy-MM-dd HH:mm:ss')}]]
+    </div>
+
+    <hr>
+    내용 :  <br>
+    <hr>
+    [[${dto.clubboard_sub}]]
+    <hr>
+    파일이름 : <a th:href="@{${dto.clubboard_filepath}}" target="_blank"> [[${dto.clubboard_filename}]]</a>
+    <hr>
+    <a th:href="@{/club/list}">
+        <button>리스트로 돌아가기</button>
+    </a>
+    <!--    <th:block th:if="${authInfo.nickname == dto.nickname}">-->
+    <div style="text-align: right;">
+        <a th:href="@{'/club/modify?clubboard_id=' + ${dto.clubboard_id}}">[게시글수정]</a>
+        <a th:href="@{'/club/delete?clubboard_id=' + ${dto.clubboard_id}}">[게시글삭제]</a>
+    </div>
+    <!--    </th:block>-->
+
+</div>
+</body>
+</html>

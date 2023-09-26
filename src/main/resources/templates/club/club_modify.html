@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modify</title>
+</head>
+<body>
+<form action="/club/modify" method="post" enctype="multipart/form-data">
+    <div th:each="dto : ${dto}">
+        <input type="hidden" name="clubboard_id" th:value="${dto.clubboard_id}">
+        <p>동아리명 :</p>
+        <label>
+            <input type="text" name="clubboard_title" th:value="${dto.clubboard_title}" required>
+        </label>
+        <hr>
+        <div style="text-align: left;">
+            개설자 : <span th:text="${dto.clubboard_emp_name}"></span><br>
+            작성시간: <span th:text="${#dates.format(dto.clubboard_regdate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+        </div>
+        <hr>
+        내용 : <br>
+        <hr>
+        <label>
+            <input type="text" name="clubboard_sub" style="width:400px;" th:value="${dto.clubboard_sub}" required>
+        </label>
+        <hr>
+        파일이름 : <a th:href="${dto.clubboard_filepath}" target="_blank"><span th:text="${dto.clubboard_filename}"></span></a>
+        <label>
+            <input type="file" name="file">
+        </label>
+        파일 1 업로드 시 기존 파일 삭제됩니다.
+        <hr>
+        <button type="submit"> 업로드 -</button>
+        <hr>
+        <a th:href="@{/club/list}">
+            <button>리스트로 돌아가기</button>
+        </a>
+        <div style="text-align: right;">
+            <a th:href="@{'/club/modify?clubboard_id=' + ${dto.clubboard_id}}">[게시글 업로드]</a>
+            <a th:href="@{'/club/delete?clubboard_id=' + ${dto.clubboard_id}}">[게시글삭제]</a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

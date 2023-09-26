@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>사원 이름</th>
+        <th>사원 직책</th>
+        <th>부서</th>
+        <th> 사원 이메일</th>
+    </tr>
+    <tr th:each="obj : ${getEmpAddress}">
+        <td th:text="${obj.empName}"></td>
+        <td th:text="${obj.gradeName}"></td>
+        <td th:text="${obj.deptName}"></td>
+        <td th:text="${obj.empEmail}"></td>
+    </tr>
+</table>
+</body>
+</html>

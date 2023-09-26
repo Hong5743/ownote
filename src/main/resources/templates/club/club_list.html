@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+
+
+    <div class="title-text">
+        <div class="title board"><h1>동아리</h1></div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>작성자</th>
+            <th>제목</th>
+            <th>한 줄 소개</th>
+            <th>개설일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dto : ${listPage.clubBoardDtos}">
+            <td>[[${dto.clubboard_id}]]</td>
+            <td>[[${dto.clubboard_emp_name}]]</a></td>
+            <td><a th:href="@{'/club/view?clubboard_id=' + ${dto.clubboard_id}}">[[${dto.clubboard_title}]]</a></td>
+            <td>[[${dto.clubboard_sub}]]</td>
+            <td>[[${#dates.format(dto.clubboard_regdate, 'yyyy-MM-dd HH:mm:ss')}]]</td>
+        </tr>
+        </tbody>
+        <tfoot>
+<!--            <div th:if="${listPage.hasClubBoardDtos()}">-->
+<!--                <tr>-->
+<!--                    <td colspan="10">-->
+<!--            <span th:if="${listPage.startPage > 1}">-->
+<!--                <a th:href="@{'/club/list?pageNo=' + (${listPage.startPage - 1})}">[이전]</a>-->
+<!--            </span>-->
+<!--                        <span th:each="pNo : ${#numbers.sequence(listPage.startPage, listPage.endPage)}">-->
+<!--                <span th:if="${pNo == listPage.currentPage}">-->
+<!--                    <strong th:text="${pNo}"></strong>-->
+<!--                </span>-->
+<!--                <span th:unless="${pNo == listPage.currentPage}">-->
+<!--                    <a href="/club/list?pageNo=${pNo}"></a>-->
+<!--                </span>-->
+<!--            </span>-->
+<!--                        <span th:if="${listPage.endPage < listPage.totalPages}">-->
+<!--                <a href="/club/list?pageNo=${listPage.endPage + 1}">[다음]</a>-->
+<!--            </span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </div>-->
+            <div th:if="${listPage.hasClubBoardDtos()}">
+                <tr>
+                    <td colspan="10">
+            <span th:if="${listPage.currentPage > 1}">
+                <a th:href="@{'/club/list?pageNo=' + ${listPage.currentPage - 1}}">[이전]</a>
+            </span>
+                        <span th:each="pNo : ${#numbers.sequence(listPage.startPage, listPage.endPage)}">
+                <span th:if="${pNo == listPage.currentPage}">
+                    <strong th:text="${pNo}"></strong>
+                </span>
+                <span th:unless="${pNo == listPage.currentPage}">
+                    <a th:href="@{'/club/list?pageNo=' + ${pNo}}">[[${pNo}]]</a>
+                </span>
+            </span>
+                        <span th:if="${listPage.currentPage < listPage.totalPages}">
+                <a th:href="@{'/club/list?pageNo=' + ${listPage.currentPage + 1}}">[다음]</a>
+            </span>
+                    </td>
+                </tr>
+            </div>
+        </tfoot>
+    </table>
+
+    <div class="buttons">
+        <a class="button-writego" th:href="@{'/club/write'}">[게시글쓰기]</a>
+    </div>
+
+</body>
+</html>
