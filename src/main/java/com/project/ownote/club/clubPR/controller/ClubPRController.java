@@ -113,4 +113,12 @@ public class ClubPRController {
         return "redirect:/club/list";
     }
 
+    @PostMapping("/club/delete")
+    public String deleteBoardP(@RequestParam("clubboard_id") int clubboard_id, Model model) {
+        clubPRService.deleteClubBoard(clubboard_id);
+        return "redirect:/club/list";
+    }
+
+
+
 }

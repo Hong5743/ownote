@@ -18,10 +18,15 @@
         WHERE e.dept_num = d.dept_num
         AND e.grade_num = g.grade_num
     </select>
-    <select id="selectByEmail" resultType="com.project.ownote.emp.login.dto.LoginDto">
-        SELECT e.emp_email AS emp_email, e.emp_password AS emp_password, e.emp_name AS emp_name, d.dept_name AS dept_name
-        FROM emp e
-        INNER JOIN dept d ON e.dept_num = d.dept_num
-        WHERE e.emp_email = #{emp_email};
+    <select id="selectByEmail" resultType="com.project.ownote.emp.login.dto.Emp">
+        select * from emp where emp_email = #{emp_email}
+    </select>
+
+    <select id="deptByNum" resultType="String">
+        select dept_name from dept where dept_num = #{dept_num}
+    </select>
+
+    <select id="gradeByNum" resultType="String">
+        select grade_name from grade where grade_num = #{grade_num}
     </select>
 </mapper>

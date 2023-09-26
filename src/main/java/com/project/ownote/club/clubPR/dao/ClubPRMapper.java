@@ -24,4 +24,6 @@ public interface ClubPRMapper {
     ClubBoardDto selectOneClubBoard(@Param("clubboard_id") int clubboard_id);
 
     void modifyClubBoard(ClubBoardDto clubBoardDto);
+
+    int deleteClubBoard(@Param("clubboard_id") int clubboard_id);
 }

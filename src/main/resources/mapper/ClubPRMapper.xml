@@ -32,10 +32,10 @@
             clubboard_filepath = #{clubboard_filepath}, clubboard_regdate = now()
         where clubboard_id = #{clubboard_id}
     </update>
-    <!--
-        <delete id="deleteStudent" parameterType="int">
-            DELETE FROM students WHERE id = #{id}
-        </delete>
-    -->
+
+    <delete id="deleteClubBoard" parameterType="int">
+            DELETE FROM clubboard WHERE clubboard_id = #{clubboard_id}
+    </delete>
+
 
 </mapper>

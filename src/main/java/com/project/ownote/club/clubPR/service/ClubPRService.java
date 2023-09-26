@@ -72,15 +72,15 @@ public class ClubPRService {
 
     public void modifyClubBoard(ClubBoardDto clubBoardDto, MultipartFile file)throws Exception{
 
-        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files\\modifyfiles";
-
+        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\modifyfiles";
+        String originProjectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static";
         // 파일이 업로드되었는지 확인
         if (file != null && !file.isEmpty()) {
 
-//            File fileToDelete = new File(clubBoardDto.getClubboard_filepath());
-//            if (fileToDelete.exists()) {
-//                fileToDelete.delete();
-//            }
+            File fileToDelete = new File(originProjectPath + clubBoardDto.getClubboard_filepath());
+            if (fileToDelete.exists()) {
+                fileToDelete.delete();
+            }
 
             UUID uuid = UUID.randomUUID();
             String filename = uuid + "_" + file.getOriginalFilename();
@@ -88,7 +88,7 @@ public class ClubPRService {
             file.transferTo(savefile);
 
             clubBoardDto.setClubboard_filename(filename);
-            clubBoardDto.setClubboard_filepath("/files/modfiyfiles/" + filename);
+            clubBoardDto.setClubboard_filepath("/modifyfiles/" + filename);
         } else {
             // 파일이 업로드되지 않았을 때, filename과 filepath를 null로 설정
 
@@ -98,4 +98,20 @@ public class ClubPRService {
 
         clubPRMapper.modifyClubBoard(clubBoardDto);
     }
+
+
+    public Integer deleteClubBoard(int clubboard_id) {
+        ClubBoardDto dto = selectOneClubBoard(clubboard_id);
+        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static";
+
+        File fileToDelete = new File(projectPath + dto.getClubboard_filepath());
+        System.out.println(fileToDelete);
+        if (fileToDelete.exists()) {
+            fileToDelete.delete();
+
+        }
+        return clubPRMapper.deleteClubBoard(clubboard_id);
+    }
+
+
 }
