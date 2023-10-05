@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance List</title>
+</head>
+<body>
+<h1>근태관리 List</h1>
+<table border="1">
+
+    <form th:action="@{/attendance/search}" method="get">
+        <label for="searchDate">날짜:</label>
+        <input type="date" id="searchDate" name="searchDate">
+        <button type="submit">조회</button>
+    </form>
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>On Time</th>
+        <th>Off Time</th>
+        <th>Status</th>
+        <th>Employee Name</th>
+        <th>Grade Name</th>
+        <th>Dept Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="attendance : ${attendances}">
+        <td th:text="${attendance.attendanceId}"></td>
+        <td th:text="${attendance.attDate}"></td>
+        <td th:text="${attendance.attOntime}"></td>
+        <td th:text="${attendance.attOfftime}"></td>
+        <td th:text="${attendance.attStatus}"></td>
+        <td th:text="${attendance.empName}"></td>
+        <td th:text="${attendance.attGradeName}"></td>
+        <td th:text="${attendance.attDeptName}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
