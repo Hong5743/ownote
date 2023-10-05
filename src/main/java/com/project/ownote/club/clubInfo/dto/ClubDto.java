@@ -17,7 +17,7 @@ public class ClubDto {  //Club DB all data
     private String clubcategory_name;
     private String club_sub;
     private Date club_regdate;
-
+    private String clubcategory_file;
 
 
 }

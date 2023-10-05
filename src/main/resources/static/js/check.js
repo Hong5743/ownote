@@ -4,7 +4,7 @@ $(document).ready(function () {
 
   // 메뉴 탭 클릭 시 Ajax 호출을 통해 해당 컨텐츠를 로드합니다.
 
-   /* let empPhoneInput = document.getElementById("emp_phone");
+    let empPhoneInput = document.getElementById("emp_phone");
     let empPasswordInput = document.getElementById("emp_password");
 
     // emp_phone 입력란의 값을 변경할 때마다 실행되는 함수를 정의합니다.
@@ -14,7 +14,7 @@ $(document).ready(function () {
         let lastFourDigits = empPhoneValue.slice(-4);
         // emp_password 입력란에 마지막 4자리 값을 할당
         empPasswordInput.value = lastFourDigits;
-    };*/
+    };
 
 
   $('#submit_emp').click(function (e) {
@@ -26,6 +26,8 @@ $(document).ready(function () {
       let emp_name = $('input[name="emp_name"]').val();
       let emp_email = $('input[name="emp_email"]').val();
       let emp_phone = $('input[name="emp_phone"]').val();
+      let dept_num = $("#dept_num").val();
+      let grade_num = $("#grade_num").val();
 
       // 모든 오류 메시지 초기화
       $('#textError1').text('');
@@ -86,11 +88,14 @@ $(document).ready(function () {
                     emp_birth: emp_birth,
                     emp_name: emp_name,
                     emp_email: emp_email,
-                    emp_phone: emp_phone
+                    emp_phone: emp_phone,
+                      dept_num: dept_num,
+                      grade_num: grade_num
                   },
 
                   success: function (data) {
                       alert('사원 등록이 완료되었습니다.');
+                      window.location.href = "/ownote";
                   },
                   error: function () {
                       // 오류 발생 시 처리
