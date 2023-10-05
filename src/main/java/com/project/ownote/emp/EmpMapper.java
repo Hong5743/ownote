@@ -1,5 +1,6 @@
 package com.project.ownote.emp;
 
+import com.project.ownote.emp.adress.dto.DeptAdressDto;
 import com.project.ownote.emp.adress.dto.EmpAdressDto;
 import com.project.ownote.emp.login.dto.Emp;
 import com.project.ownote.emp.login.dto.LoginDto;
@@ -14,11 +15,21 @@ import java.util.List;
 public interface EmpMapper {
 
     public void insertEmp(SignUpDto signUpDto);
+    Integer countEmpAdress();
+    List<EmpAdressDto> adressListPage(@Param("startRow") int startRow, @Param("size") int size);
+
+    List<DeptAdressDto> deptAdressListPage(@Param("startRow") int startRow, @Param("size") int size,@Param("dept_num") int dept_num);
     public List<EmpAdressDto> getEmpAddress();
+    public List<EmpAdressDto> adressForDept(int dept_num);
+
+    boolean checkEmail(String emp_email);
+
+    public LoginDto loginByEmail(String emp_email);
 
     public Emp selectByEmail(@Param("emp_email") String emp_email);
 
     public String deptByNum(@Param("dept_num") int dept_num);
 
     public String gradeByNum(@Param("grade_num") int grade_num);
+
 }

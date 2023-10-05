@@ -11,8 +11,6 @@ public class EmpAdressDto {
 
     private String empName;
     private String empEmail; // 필드 이름 수정
-//    private int gradeNum;
-//    private int deptNum;
     private String deptName; // deptName 추가
     private String gradeName; // gradeName 추가
 

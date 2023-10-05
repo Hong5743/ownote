@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/table.css">
+</head>
+<body>
+<div>
+    <input type="button" th:value="전체" id="all_emp_adress">
+    <input type="button" th:value="회계" id="acc_emp_adress">
+    <input type="button" th:value="개발" id="dev_emp_adress">
+    <input type="button" th:value="인사" id="per_emp_adress">
+    <input type="button" th:value="경영" id="man_emp_adress">
+    <input type="button" th:value="물류" id="dis_emp_adress">
+    <input type="button" th:value="영업" id="sal_emp_adress">
+</div>
+<table border="1" class="table1">
+    <tr>
+        <th>이름</th>
+        <th>직책</th>
+        <th>부서</th>
+        <th>이메일</th>
+    </tr>
+    <tr th:each="obj : ${listPage.deptAdressDtos}">
+        <td th:text="${obj.emp_name}"></td>
+        <td th:text="${obj.grade_name}"></td>
+        <td th:text="${obj.dept_name}"></td>
+        <td th:text="${obj.emp_email}"></td>
+    </tr>
+
+</table>
+<div th:if="${listPage.hasDeptAdressDtos()}">
+    <tr>
+        <td colspan="10">
+               <span th:if="${listPage.currentPage > 1}">
+                   <a th:href="@{'/emp/adressDept?pageNo=' + ${listPage.currentPage - 1}}">[이전]</a>
+               </span>
+            <span th:each="pNo: ${#numbers.sequence(listPage.startPage, listPage.endPage)}">
+                   <span th:if="${pNo == listPage.currentPage}">
+                       <strong th:text="${pNo}"></strong>
+                   </span>
+                   <span th:unless="${pNo == listPage.currentPage}">
+                       <a th:href="@{'/emp/adressDept?pageNo=' + ${pNo}}">[[${pNo}]]</a>
+                   </span>
+               </span>
+            <span th:if="${listPage.currentPage < listPage.totalPages}">
+                   <a th:href="@{'/emp/adressDept?pageNo=' + ${listPage.currentPage + 1}}">[다음]</a>
+               </span>
+        </td>
+    </tr>
+</div>
+<script src="/js/getAdress.js"></script>
+</body>
+</html>

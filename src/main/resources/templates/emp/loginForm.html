@@ -5,17 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/emp/loginSucess}" method="post">
+<form th:action="@{/ownote}" method="post">
     <p>
         <label for="emp_email">이메일</label>
-        <input type="text" id="emp_email" name="emp_email">@ownote.com</input>
-    </P>
+        <input type="text" id="emp_email" name="emp_email">@ownote.com</p>
+        <div id="textError1"></div>
+    </p>
     <p>
         <label for="emp_password">비밀번호</label>
         <input type="password" id="emp_password" name="emp_password"/>
-    </P>
-    <input type="submit" value="로그인">
-    <input type="submit"  value="취소">
+        <div id="textError2"></div>
+    </p>
+    <input type="submit" value="로그인" id="login">
+    <input type="reset"  value="취소">
 </form>
+<div id="error-message" th:text="${error_message}" th:style="${error_messageStyle}" style="color: red;"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/checkLogin.js"></script>
 </body>
 </html>

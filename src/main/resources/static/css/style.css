@@ -3,6 +3,21 @@ body, ul, li {
     padding: 0;
     list-style: none;
   }
+#nav2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6e6b1;
+  padding: 8px 12px;
+}
+
+.navbar-menu {
+  display: flex;
+}
+
+.navbar-menu li {
+  padding: 8px 12px;
+}
 
   a {
     color: inherit;   	   
@@ -15,7 +30,8 @@ body, ul, li {
 
   body {
     height: 5000px;
-    background-color: #444;
+    /*background-color: #f6ede8;*/
+    background-color: #fafaf4;
   }
  
   :root {
@@ -25,7 +41,7 @@ body, ul, li {
 
   .side-bar {
     position: fixed;    
-    background-color: black;
+    background-color: #e6e6b1;
     width: var(--side-bar-width);
     min-height: var(--side-bar-height); 
     margin-top: calc((100vh - var(--side-bar-height)) / 2);
@@ -33,7 +49,7 @@ body, ul, li {
 
   .side-bar ul > li > a {
     display: block;
-    color: white;
+    color: black;
     font-size: 1.4rem;
     font-weight: bold;
     padding-top: 20px;
@@ -46,14 +62,14 @@ body, ul, li {
   }
 
   .side-bar ul > li:hover > a {
-    background-color: #555;
+    background-color: #e9e9fb;
     border-bottom: 1px solid #999;
   }
 
   .side-bar > ul > li:hover > ul {
     display: block;
     position: absolute;
-    background-color: #888;
+    background-color: #e9e9fb;
     top: 0;
     left: 100%;   
     width: 100%;    
@@ -70,3 +86,4 @@ body, ul, li {
 .side-bar:hover {
     transform: translate(-20px, 0);   /* 둥근 모서리의 너비만큼 X축 이동, Y축 고정 */
   }
+

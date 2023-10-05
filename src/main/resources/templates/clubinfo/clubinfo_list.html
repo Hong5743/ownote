@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>동아리 목록</title>
+</head>
+<body>
+<div class="articles">
+    <div class="title_wrap">
+        <strong>동아리</strong> <br>
+        <p><h3> Ownote </h3>동아리 언제나 열려있습니다!</p>
+    </div>
+
+    <div class="club_wrap">
+        <div th:each="dto : ${listPage.clubBoardDtos}" class="club">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

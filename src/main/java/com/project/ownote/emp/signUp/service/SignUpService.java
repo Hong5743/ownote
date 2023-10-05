@@ -15,4 +15,9 @@ public class SignUpService {
         empMapper.insertEmp(signUpDto);
     }
 
+    public boolean checkEmail(String emp_email) {
+        return empMapper.checkEmail(emp_email);
+    }
+
+
 }
