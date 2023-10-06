@@ -53,7 +53,7 @@ public class ClubInfoController {
         ClubPage clubPage = getClubPage(pageNum, pageSize); // 사용자 페이지 정보를 조회
 
         model.addAttribute("listPage", clubPage); // 모델에 사용자 페이지 정보를 추가
-        return "/clubInfo/club_list";
+        return "/clubinfo/clubinfo_list";
     }
 
 /*    @GetMapping("/club/list")

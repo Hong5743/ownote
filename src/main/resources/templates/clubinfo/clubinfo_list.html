@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>동아리 목록</title>
+<link href="/css/clubInfo.css" rel="stylesheet">
 </head>
 <body>
 <div class="articles">
@@ -13,8 +14,11 @@
 
     <div class="club_wrap">
         <div th:each="dto : ${listPage.clubDtos}" class="club">
-            <strong>[[${dto.club_id</strong>
+            <strong>[[${dto.club_emp_name}]]</strong>
+            <img th:src="${dto.clubcategory_file}" alt="이미지 설명" class="category_image">
+
         </div>
+
     </div>
 </div>
 </body>

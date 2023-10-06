@@ -2,11 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Q&A 게시판</title>
+    <title>Title</title>
 </head>
 <body>
 <form th:action="@{/board/findLike}" method="post">
     <select id="boardDivision" name="boardDivision" >
+        <option value="공지사항">공지사항</option>
+        <option value="자유게시판">자유게시판</option>
         <option value="Q&A">Q&A</option>
     </select>
     <input type="text" name="find" />
@@ -39,22 +41,18 @@
         <tr>
             <td colspan="5">
                 <th:block th:if="${boardPage.startPage > 5}">
-                    <a th:href = "@{/board/qaList(pageNo=${boardPage.startPage - 5})}">[이전]</a>
+                    <a th:href = "@{/board/findLike(pageNo=${boardPage.startPage - 5})}">[이전]</a>
                 </th:block>
-                <th:block th:each="pNo : ${#numbers.sequence(boardPage.startPage, boardPage.endPage)}" >
-                    <a th:href="@{/board/qaList(pageNo=${pNo})}" th:text="${pNo}"></a>
+                <th:block th:each="pNo : ${#numbers.sequence(boardPage.startPage, boardPage.endPage)}">
+                    <a th:href="@{/board/findLike(pageNo=${pNo},boardDivision=${boardDivision},find=${find})}" th:text="${pNo}"></a>
                 </th:block>
                 <th:block th:if="${boardPage.endPage < boardPage.totalPages}">
-                    <a th:href = "@{/board/qaList(pageNo=${boardPage.startPage + 5})}">[다음]</a>
+                    <a th:href = "@{/board/findLike(pageNo=${boardPage.startPage + 5})}">[다음]</a>
                 </th:block>
             </td>
         </tr>
     </th:block>
     </tbody>
-    <tr>
-        <td class="main" colspan="5">
-        <a th:href = "@{/board/boardwriteform}">글쓰기</a></td>
-    </tr>
 </table>
 </body>
 </html>

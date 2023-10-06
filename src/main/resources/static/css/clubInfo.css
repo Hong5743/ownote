@@ -45,3 +45,8 @@ a {
     color: white;
 }
 
+.category_image {
+    width: 200px;
+    height: auto;
+}
+
