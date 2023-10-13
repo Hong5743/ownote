@@ -4,9 +4,60 @@
     <meta charset="UTF-8">
     <title>list</title>
     <link href="/css/club.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-
+<header>
+    <nav id="nav2">
+        <h1>Ownote</h1>
+        <ul class="navbar-menu">
+            <li> <a th:href="@{emp/logIn}" >로그인</a> </li>
+            <li> <a href="">로그아웃</a> </li>
+        </ul>
+    </nav>
+</header>
+<aside class="side-bar">
+    <ul>
+        <li>
+            <a th:href="@{#}"></i>인사</a>
+            <ul>
+                <li><a th:href="@{/emp/signUp}">사원등록</a></li>
+                <li><a th:href="@{#}">text2</a></li>
+                <li><a th:href="@{#}">text3</a></li>
+                <li><a th:href="@{#}">text4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a th:href="@{#}">연차</a>
+            <ul>
+                <li><a th:href="@{#}">연차 신청 </a></li>
+                <li><a th:href="@{#}">연차 확인</a></li>
+                <li><a th:href="@{#}">연차 승인</a></li>
+                <li><a th:href="@{#}">연차 수량</a></li>
+            </ul>
+        </li>
+        <li>
+            <a th:href="@{#}">게시판</a>
+            <ul>
+                <li><a th:href="@{#}">text1</a></li>
+                <li><a th:href="@{#}">text2</a></li>
+                <li><a th:href="@{#}">text3</a></li>
+                <li><a th:href="@{#}">text4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a th:href="@{#}">동아리</a>
+            <ul>
+                <li><a th:href="@{/clubinfo/list}">동아리 소개</a></li>
+                <li><a th:href="@{/club/list}">홍보 게시판</a></li>
+                <li><a th:href="@{#}">text3</a></li>
+                <li><a th:href="@{#}">text4</a></li>
+            </ul>
+        </li>
+        <li><a th:href="@{/emp/adress}">주소록</a></li>
+    </ul>
+</aside>
+<script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
 <div class="board_wrap">
     <div class="title-text">
         <div class="title_board">
@@ -27,7 +78,7 @@
         <tbody>
         <tr th:each="dto : ${listPage.clubBoardDtos}">
             <td>[[${dto.clubboard_id}]]</td>
-            <td>[[${dto.clubboard_emp_name}]]</a></td>
+            <td>[[${dto.clubboard_emp_name}]] ( [[${dto.clubboard_dept_name}]] )</td>
             <td><a th:href="@{'/club/view?clubboard_id=' + ${dto.clubboard_id}}">[[${dto.clubboard_title}]]</a></td>
             <td>[[${#dates.format(dto.clubboard_regdate, 'yyyy-MM-dd HH:mm:ss')}]]</td>
         </tr>

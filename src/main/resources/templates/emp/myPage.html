@@ -36,18 +36,23 @@
         </tr>
         <tr>
             <th scope="row">입사일</th>
-            <td th:text="${myPage.emp_date}"></td>
+            <td th:text="${#dates.format(myPage.emp_date, 'yyyy-MM-dd')}"></td>
         </tr>
-        <!--<tr>
+        <tr>
             <th scope="row">직책</th>
             <td th:text="${myPage.grade_name}"></td>
         </tr>
         <tr>
             <th scope="row">부서</th>
             <td th:text="${myPage.dept_name}"></td>
-        </tr>-->
+        </tr>
     </tbody>
 </table>
+</div>
+<div id="changeMyInfo">
+    <form th:action="@{/emp/changePhone}" method="get">
+        <input type="submit" value="변경한다" id="changeMyInfo_submit">
+    </form>
 </div>
 </body>
 </html>

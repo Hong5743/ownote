@@ -6,21 +6,17 @@
 </head>
 <body>
 <h1>
-    회원가입
+    사원등록
 </h1>
 <form th:action="@{/ownote}" method="post">
-    <!--<p>
-        <label for="empNum">사원번호</label>
-        <input type="text" id="empNum" name="empNum"/>
-    </P>-->
     <p>
         <label for="emp_password">비밀번호</label>
-        <input type="password" id="emp_password" name="emp_password"/>
+        <input type="password" id="emp_password" name="emp_password" placeholder="전화번호 뒷 4자리가 자동으로 입력 됩니다." readonly/>
         <div id="textError1"></div>
     </P>
     <p>
         <label for="emp_birth">생년 월일</label>
-        <input type="text" id="emp_birth" name="emp_birth"/>
+        <input type="text" id="emp_birth" name="emp_birth" placeholder="-를 제외한 숫자만 입력해 주세요."/>
         <div id="textError2"></div>
     </P>
     <p>
@@ -30,7 +26,7 @@
     </P>
     <p>
         <label for="emp_email">이메일</label>
-        <input type="text" id="emp_email" name="emp_email"/>@ownote.com
+        <input type="text" id="emp_email" name="emp_email" placeholder="@전까지 영문으로 입력해 주세요."/>@ownote.com
         <input type="button" value="중복확인" onclick="check_emp_email()">
         <span id="emp_email_error"></span>
         <div id="textError4"></div>
@@ -38,7 +34,7 @@
     </p>
     <p>
         <label for="emp_phone">전화 번호</label>
-        <input type="text" id="emp_phone" name="emp_phone"/>
+        <input type="text" id="emp_phone" name="emp_phone" placeholder="-를 제외한 숫자만 입력해 주세요."/>
         <div id="textError5"></div>
     </P>
     <p>
@@ -51,7 +47,6 @@
             <option value="4">과장</option>
             <option value="5">이사</option>
             <option value="6">전무</option>
-            <!-- 다른 직책 옵션들을 여기에 추가 -->
         </select>
     </p>
     <p>
@@ -66,7 +61,7 @@
 
         </select>
     </p>
-    <input type="submit" value="가입하기" id="submit_emp">
+    <input type="submit" value="등록하기" id="submit_emp">
 </form>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/check.js"></script>

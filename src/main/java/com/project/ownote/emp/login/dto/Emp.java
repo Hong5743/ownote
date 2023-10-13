@@ -1,10 +1,7 @@
 package com.project.ownote.emp.login.dto;
 
 import com.project.ownote.emp.login.exception.WrongIdPasswordException;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,6 +10,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Emp {
     private int emp_id;
     private int emp_num;
@@ -24,22 +22,21 @@ public class Emp {
     private Date emp_date;
     private int grade_num;
     private int dept_num;
+    private String grade_name;
+    private String dept_name;
 
-//    public Emp(String id, String password, String name, String nickname, String phone, LocalDateTime regdate) {
-//        super();
-//        this.id = id;
-//        this.password = password;
-//        this.name = name;
-//        this.nickname = nickname;
-//        this.phone = phone;
-//        this.registerDateTime = regdate;
-//    }
     public void changePassword(String oldPassword, String newPassword) {
         if (!emp_password.equals(oldPassword))
             throw new WrongIdPasswordException();
         this.emp_password = newPassword;
     }
 
+    public void changeEmpPhone(String old_emp_phone, String new_emp_phone, String old_emp_password, String new_emp_password) {
+        if (!emp_phone.equals(old_emp_phone) && !emp_password.equals(old_emp_password))
+            throw new WrongIdPasswordException();
+        this.emp_phone = new_emp_phone;
+        this.emp_password = new_emp_password;
+    }
     public boolean matchPassword(String password) {
         return this.emp_password.equals(password);}
 }

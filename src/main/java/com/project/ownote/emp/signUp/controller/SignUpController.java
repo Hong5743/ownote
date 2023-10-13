@@ -33,7 +33,7 @@ public class SignUpController {
                 redirectAttributes.addFlashAttribute("error", "영문 숫자 조합만 입력이 가능합니다.");
             }
             signUpService.insertEmp(signUpDto);
-            return "/ownote";
+            return "ownote1";
         } catch (Exception e) {
             // 회원가입 실패 처리
             redirectAttributes.addFlashAttribute("error", "회원가입에 실패했습니다. 다시 시도해주세요.");

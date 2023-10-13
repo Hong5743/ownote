@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @Slf4j
 public class AnnualController {
@@ -27,7 +29,14 @@ public class AnnualController {
     AnnualRepository annualRepository;
 @Autowired
     AnnualEm annualEm;
+    private int size = 10;
 
+    public AnnualPage getAnnualPage (int pageNum, int pageSize){
+        int total = annualDao.countAnnual();
+        List<AnnualDto> content = annualDao.annualAllList((pageNum -1) * size, size);
+
+        return new AnnualPage(total, pageNum,size,content);
+    }
 
 
 //    @GetMapping("/write")
@@ -53,13 +62,14 @@ public class AnnualController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String getAnnualList(Model model, @RequestParam(value = "pageNo", required = false) String pageNoVal) {
+    public String getAnnualList(Model model, @RequestParam(name = "pageNo", required = false) String pageNo) {
+        int pageSize = 4; // 페이지 크기 설정 (한 페이지에 보여줄 회원 수)
+        int pageNum = 1;
 
-        int pageNo = 1;
-        if (pageNoVal != null) {
-            pageNo = Integer.parseInt(pageNoVal);
+        if (pageNo != null) {
+            pageNum = Integer.parseInt(pageNo);
         }
-        AnnualPage annualPage = annualService.getAnnualPage(pageNo);
+        AnnualPage annualPage = getAnnualPage(pageNum, pageSize);
 
         log.info("-------" + annualPage);
         model.addAttribute("annualPage", annualPage);

@@ -36,9 +36,15 @@ public class LoginController {
         System.out.println("------------------------------" + authInfo);
         session.setAttribute("authInfo", authInfo);
 
+
         Emp emp = empMapper.selectByEmail(email);
-        //System.out.println(emp);
-        //System.out.println(authInfo);
         return "success";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout (HttpSession session) {
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        session.invalidate();
+        return "redirect:/";
     }
 }

@@ -7,13 +7,13 @@
 </head>
 <body>
 <div>
-    <input type="button" th:value="전체" id="all_emp_adress">
-    <input type="button" th:value="회계" id="acc_emp_adress">
-    <input type="button" th:value="개발" id="dev_emp_adress">
-    <input type="button" th:value="인사" id="per_emp_adress">
-    <input type="button" th:value="경영" id="man_emp_adress">
-    <input type="button" th:value="물류" id="dis_emp_adress">
-    <input type="button" th:value="영업" id="sal_emp_adress">
+    <a th:href="@{/emp/adress}" id="all_emp_adress">전체</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=10)}">회계</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=30)}">개발</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=40)}">인사</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=50)}">경영</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=60)}">물류</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=20)}">영업</a>
 </div>
 <table border="1" class="table1">
     <tr>
@@ -22,13 +22,7 @@
         <th>부서</th>
         <th>이메일</th>
     </tr>
-    <tr th:each="obj : ${getEmpAddress}">
-        <td th:text="${obj.empName}"></td>
-        <td th:text="${obj.gradeName}"></td>
-        <td th:text="${obj.deptName}"></td>
-        <td th:text="${obj.empEmail}"></td>
-    </tr>
-    <tr th:each="obj : ${adressForDept}">
+    <tr th:each="obj : ${listPage.empAdressDtos}">
         <td th:text="${obj.empName}"></td>
         <td th:text="${obj.gradeName}"></td>
         <td th:text="${obj.deptName}"></td>
@@ -55,6 +49,8 @@
         </td>
     </tr>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/getAdress.js"></script>
 </body>
 </html>

@@ -31,9 +31,10 @@
 
             <div class="ii">
                 이름: <label>
-                <input type="text"  name="clubboard_emp_name" style="width:400px;" placeholder="제목을 입력하세요." required>
+                <input type="text"  name="showEx" style="width:400px;" th:value="${authInfo.emp_name+'( '+authInfo.dept_name+'팀 )'}"  readonly>
+                <input type="hidden"  name="clubboard_emp_name" style="width:400px;" th:value="${authInfo.emp_name}"  readonly>
+                <input type="hidden"  name="clubboard_dept_name" style="width:400px;" th:value="${authInfo.dept_name}"  readonly>
             </label>
-
             </div>
 
             <div class="msg">

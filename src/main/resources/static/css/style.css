@@ -1,3 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 15px;
+}
+
+
 body, ul, li {
     margin: 0;
     padding: 0;
@@ -7,8 +17,8 @@ body, ul, li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #e6e6b1;
-  padding: 8px 12px;
+  background-color: #61adf6;
+  padding: 30px 15px;
 }
 
 .navbar-menu {
@@ -41,7 +51,7 @@ body, ul, li {
 
   .side-bar {
     position: fixed;    
-    background-color: #e6e6b1;
+    background-color: #61adf6;
     width: var(--side-bar-width);
     min-height: var(--side-bar-height); 
     margin-top: calc((100vh - var(--side-bar-height)) / 2);
@@ -62,14 +72,14 @@ body, ul, li {
   }
 
   .side-bar ul > li:hover > a {
-    background-color: #e9e9fb;
+    background-color: #61adf6;
     border-bottom: 1px solid #999;
   }
 
   .side-bar > ul > li:hover > ul {
     display: block;
     position: absolute;
-    background-color: #e9e9fb;
+    background-color: #61adf6;
     top: 0;
     left: 100%;   
     width: 100%;    
@@ -86,4 +96,9 @@ body, ul, li {
 .side-bar:hover {
     transform: translate(-20px, 0);   /* 둥근 모서리의 너비만큼 X축 이동, Y축 고정 */
   }
+
+.contentContainer {
+  width: 1000px;
+  margin: 100px auto;
+}
 

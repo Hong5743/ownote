@@ -38,7 +38,7 @@ public class EmpAdressPage {
         }
     }
 
-   public int getTotal() {return total;}
+    public int getTotal() {return total;}
     public boolean hasNoEmpAdressDtos() {return total == 0;}
     public boolean hasEmpAdressDtos() {return total > 0;}
     public int getCurrentPage() {return currentPage;}

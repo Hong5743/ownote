@@ -1,11 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+/**{*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
 
-html{
-    font-size: 15px;
-}
+/*html{*/
+/*    font-size: 15px;*/
+/*}*/
 
 a {
     text-decoration: none;
@@ -47,8 +47,8 @@ a {
 
 .board_list {
     width: 100%;
-    border-top: 2px solid #000000;
-    border-bottom: 2px solid #000000;
+    border-top: 2px solid #61adf6;
+    border-bottom: 2px solid #61adf6;
 
 }
 
@@ -73,7 +73,7 @@ td:nth-child(1) {
 th:nth-child(2),
 td:nth-child(2) {
     text-align: center;
-    width: 100px;
+    width: 130px;
 }
 
 th:nth-child(3),
@@ -88,5 +88,5 @@ tfoot {
 }
 
 tbody tr:hover {
-    background-color: #e0e0e0; /* 호버(마우스를 올렸을 때) 상태 배경색 설정 */
+    background-color: #61adf6; /* 호버(마우스를 올렸을 때) 상태 배경색 설정 */
 }

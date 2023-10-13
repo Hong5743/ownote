@@ -7,13 +7,13 @@
 </head>
 <body>
 <div>
-    <input type="button" th:value="전체" id="all_emp_adress">
-    <input type="button" th:value="회계" id="acc_emp_adress">
-    <input type="button" th:value="개발" id="dev_emp_adress">
-    <input type="button" th:value="인사" id="per_emp_adress">
-    <input type="button" th:value="경영" id="man_emp_adress">
-    <input type="button" th:value="물류" id="dis_emp_adress">
-    <input type="button" th:value="영업" id="sal_emp_adress">
+    <a th:href="@{/emp/adress}" id="all_emp_adress">전체</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=10)}">회계</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=30)}">개발</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=40)}">인사</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=50)}">경영</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=60)}">물류</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=20)}">영업</a>
 </div>
 <table border="1" class="table1">
     <tr>
@@ -22,30 +22,30 @@
         <th>부서</th>
         <th>이메일</th>
     </tr>
-    <tr th:each="obj : ${listPage.deptAdressDtos}">
-        <td th:text="${obj.emp_name}"></td>
-        <td th:text="${obj.grade_name}"></td>
-        <td th:text="${obj.dept_name}"></td>
-        <td th:text="${obj.emp_email}"></td>
+    <tr th:each="obj : ${deptPage.deptAdressDtos}">
+        <td th:text="${obj.empName}"></td>
+        <td th:text="${obj.gradeName}"></td>
+        <td th:text="${obj.deptName}"></td>
+        <td th:text="${obj.empEmail}"></td>
     </tr>
 
 </table>
-<div th:if="${listPage.hasDeptAdressDtos()}">
+<div th:if="${deptPage.hasDeptAdressDtos()}">
     <tr>
         <td colspan="10">
-               <span th:if="${listPage.currentPage > 1}">
-                   <a th:href="@{'/emp/adressDept?pageNo=' + ${listPage.currentPage - 1}}">[이전]</a>
+               <span th:if="${deptPage.currentPage > 1}">
+                   <a th:href="@{/emp/adressDept/{dept_num}(dept_num=${dept_num}, pageNo=${deptPage.currentPage - 1})}">[이전]</a>
                </span>
-            <span th:each="pNo: ${#numbers.sequence(listPage.startPage, listPage.endPage)}">
-                   <span th:if="${pNo == listPage.currentPage}">
+            <span th:each="pNo: ${#numbers.sequence(deptPage.startPage, deptPage.endPage)}">
+                   <span th:if="${pNo == deptPage.currentPage}">
                        <strong th:text="${pNo}"></strong>
                    </span>
-                   <span th:unless="${pNo == listPage.currentPage}">
-                       <a th:href="@{'/emp/adressDept?pageNo=' + ${pNo}}">[[${pNo}]]</a>
+                   <span th:unless="${pNo == deptPage.currentPage}">
+                       <a th:href="@{/emp/adressDept/{dept_num}(dept_num=${dept_num}, pageNo=${pNo})}">[[${pNo}]]</a>
                    </span>
                </span>
-            <span th:if="${listPage.currentPage < listPage.totalPages}">
-                   <a th:href="@{'/emp/adressDept?pageNo=' + ${listPage.currentPage + 1}}">[다음]</a>
+            <span th:if="${deptPage.currentPage < deptPage.totalPages}">
+                   <a th:href="@{/emp/adressDept/{dept_num}(dept_num=${dept_num}, pageNo=${deptPage.currentPage + 1})}">[다음]</a>
                </span>
         </td>
     </tr>

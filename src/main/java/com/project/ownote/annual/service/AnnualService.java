@@ -18,14 +18,7 @@ public class AnnualService {
 @Autowired
     AnnualRepository annualRepository;
 
-private int size = 10;
-
-public AnnualPage getAnnualPage (int pageNum){
-int total = annualDao.countAnnual();
-List<AnnualDto> content = annualDao.annualAllList((pageNum -1) * size, size);
-
-    return new AnnualPage(total, pageNum,size,content);
-    }
+public List<AnnualDto> annualPage(int startRow, int size) {return annualDao.annualAllList(startRow, size);}
 
 public String findEmpNameById(int emp_id){
     return annualDao.findEmpNameById(emp_id);

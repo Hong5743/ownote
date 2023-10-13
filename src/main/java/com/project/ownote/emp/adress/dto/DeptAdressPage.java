@@ -9,7 +9,6 @@ public class DeptAdressPage {
     private int totalPages;
     private int startPage;
     private int endPage;
-
     public DeptAdressPage(int total, int currentPage, int size, List<DeptAdressDto> deptAdressDtos) {
         // 총 항목 수, 현재 페이지 번호, 페이지당 항목 수, 사용자 목록을 받아와서 초기화합니다.
         this.total = total;
@@ -38,7 +37,7 @@ public class DeptAdressPage {
         }
     }
 
-   public int getTotal() {return total;}
+    public int getTotal() {return total;}
     public boolean hasNoDeptAdressDtos() {return total == 0;}
     public boolean hasDeptAdressDtos() {return total > 0;}
     public int getCurrentPage() {return currentPage;}

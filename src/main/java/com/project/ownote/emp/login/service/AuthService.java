@@ -24,7 +24,7 @@ public class AuthService {
         if (!emp.matchPassword(password)) {
             throw new WrongIdPasswordException();
         }
-        return new AuthInfo(emp.getEmp_id(),emp.getEmp_num(),dept_name,grade_name,emp.getEmp_password(),emp.getEmp_name(),emp.getEmp_email());
+        return new AuthInfo(emp.getEmp_id(),emp.getEmp_num(),dept_name,grade_name,emp.getEmp_password(),emp.getEmp_name(),emp.getEmp_email(), emp.getDept_num(), emp.getGrade_num());
     }
 
 //    public boolean loginByEmail(String emp_email) {

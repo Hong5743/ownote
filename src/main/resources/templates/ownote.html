@@ -9,13 +9,16 @@
 </head>
 <body>
 <header>
-  <nav id="nav2">
-      <h1>Ownote</h1>
-      <ul class="navbar-menu">
-          <li> <a th:href="@{emp/logIn}" >로그인</a> </li>
-          <li> <a href="">로그아웃</a> </li>
-      </ul>
-  </nav>
+    <nav id="nav2">
+        <h1>Ownote</h1>
+        <ul class="navbar-menu">
+            <li ><a th:if ="${authInfo == null}" th:href="@{/emp/logIn}">로그인</a></li>
+        </ul>
+        <ul class="navbar-menu">
+            <li><a th:if ="${authInfo != null}" th:href="@{/emp/myPage}">[[${authInfo.emp_name}]]님</a></li>
+            <li><a th:if ="${authInfo != null}" th:href="@{/logout}">로그아웃</a></li>
+        </ul>
+    </nav>
 </header>
   <aside class="side-bar">
     <ul>
@@ -47,10 +50,10 @@
           </ul>
         </li>
         <li>
-          <a th:href="@{#}">자유</a>
+          <a th:href="@{#}">동아리</a>
           <ul>
-            <li><a th:href="@{#}">text1</a></li>
-            <li><a th:href="@{#}">text2</a></li>
+            <li><a th:href="@{/clubinfo/list}">동아리 소개</a></li>
+            <li><a th:href="@{/club/list}">홍보 게시판</a></li>
             <li><a th:href="@{#}">text3</a></li>
             <li><a th:href="@{#}">text4</a></li>
           </ul>
@@ -58,6 +61,27 @@
         <li><a th:href="@{/emp/adress}">주소록</a></li>
       </ul>
   </aside>
+<div class="contentContainer">
+    <p><a th:href="@{/musicContest/list}" >더보기</a></p>
+    <table class="table1">
+        <tr>
+            <th>번호</th>
+            <th>사원</th>
+            <th>부서</th>
+            <th>제목</th>
+            <th>게시일</th>
+            <th>좋아요</th>
+        </tr>
+        <tr th:each="dto : ${contestList}">
+            <td th:text="${dto.musiccontest_num}"></td>
+            <td th:text="${dto.musiccontest_emp_name}"></td>
+            <td th:text="${dto.musiccontest_dept_name}"></td>
+            <td th:text="${dto.musiccontest_title}"></td>
+            <td th:text="${#dates.format(dto.musiccontest_regdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td th:text="${dto.musiccontest_likes}"></td>
+        </tr>
+    </table>
+</div>
   <script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
 </body>
 </html>
