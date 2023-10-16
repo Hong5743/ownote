@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/layout :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/atag.css">
 </head>
 <body>
-<nav>
-<div>
-<ul class="adress-dept">
-    <li><a th:href="@{/emp/adress}" id="all_emp_adress">전체</a></li>
-    <li><a th:href="@{/emp/adressDept/{dept_num}(dept_num=10)}">회계</a></li>
-    <li><a th:href="@{/emp/adressDept/{dept_num}(dept_num=30)}">개발</a></li>
-    <li><a th:href="@{/emp/adressDept/{dept_num}(dept_num=40)}">인사</a></li>
-    <li><a th:href="@{/emp/adressDept/{dept_num}(dept_num=50)}">경영</a></li>
-    <li><a th:href="@{/emp/adressDept/{dept_num}(dept_num=60)}">물류</a></li>
-    <li><a th:href="@{/emp/adressDept/{dept_num}(dept_num=20)}">영업</a></li>
-</ul>
+<div class="board_wrap">
+<div class="adress-dept">
+    <a th:href="@{/emp/adress}" id="all_emp_adress">전체</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=10)}">회계</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=30)}">개발</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=40)}">인사</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=50)}">경영</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=60)}">물류</a>
+    <a th:href="@{/emp/adressDept/{dept_num}(dept_num=20)}">영업</a>
 </div>
-<table border="1" class="table1">
+    <div class="board_list">
+<table>
     <tr>
         <th>이름</th>
         <th>직책</th>
@@ -32,7 +33,8 @@
         <td th:text="${obj.empEmail}"></td>
     </tr>
 </table>
-<div class="adress-dept-page" th:if="${listPage.hasEmpAdressDtos()}">
+    </div>
+    <div class="adress-dept-page" th:if="${listPage.hasEmpAdressDtos()}">
     <tr>
         <td colspan="10">
                <span th:if="${listPage.currentPage > 1}">
@@ -52,8 +54,10 @@
         </td>
     </tr>
 </div>
-</nav>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/getAdress.js"></script>
 </body>
+    </th:block>
+</th:block>
 </html>
