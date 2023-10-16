@@ -26,13 +26,5 @@
     </table>
     <a th:href="@{/musicContest/write}">글쓰기</a>
 </div>
-<script>
-    // URL 매개변수를 통해 에러 코드를 확인하고 알림창을 표시합니다.
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get("error") === "1") {
-        window.location.href = "/musicContest/list";
-        alert("이미 좋아요를 선택 하였습니다.");
-    }
-</script>
 </body>
 </html>

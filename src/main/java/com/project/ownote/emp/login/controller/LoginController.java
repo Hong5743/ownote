@@ -33,12 +33,10 @@ public class LoginController {
     public String PostLogin(@RequestParam("emp_email") String emp_email, @RequestParam("emp_password") String emp_password, HttpSession session) {
         String email = emp_email;
         AuthInfo authInfo = authService.authenticate(email, emp_password);
-        System.out.println("------------------------------" + authInfo);
-        session.setAttribute("authInfo", authInfo);
-
-
-        Emp emp = empMapper.selectByEmail(email);
-        return "success";
+            System.out.println("------------------------------" + authInfo);
+            session.setAttribute("authInfo", authInfo);
+            Emp emp = empMapper.selectByEmail(email);
+            return "success";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
