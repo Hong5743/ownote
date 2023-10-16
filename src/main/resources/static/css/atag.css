@@ -1,0 +1,39 @@
+.adress-dept {
+    display: flex;
+    list-style:none;
+    width: 50%;
+   justify-content: space-between;
+    align-items: center;
+}
+
+.adress-dept a {
+	display: block;
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    padding: 10px 18px;
+    border-radius: 15px;
+}
+
+.adress-dept a:hover {
+    box-shadow: 100px 0 0 0 rgba(0,0,0,0.5) inset;
+}
+
+.adress-dept-page a {
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    color: white;
+    background-color: #ccc;
+}
+
+.adress-dept-page a.select {
+    color: #007BFF;
+    background-color: #007BFF;
+}
+
+
+
+
