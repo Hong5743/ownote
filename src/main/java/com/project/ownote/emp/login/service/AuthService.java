@@ -24,11 +24,6 @@ public class AuthService {
         if (!emp.matchPassword(password)) {
             throw new WrongIdPasswordException();
         }
-        return new AuthInfo(emp.getEmp_id(),emp.getEmp_num(),dept_name,grade_name,emp.getEmp_password(),emp.getEmp_name(),emp.getEmp_email(), emp.getDept_num(), emp.getGrade_num());
+        return new AuthInfo(emp.getEmp_id(),emp.getEmp_num(),dept_name,grade_name,emp.getEmp_password(),emp.getEmp_name(),emp.getEmp_email(), emp.getGrade_num(), emp.getDept_num());
     }
-
-//    public boolean loginByEmail(String emp_email) {
-//        LoginDto loginDto = empMapper.loginByEmail(emp_email);
-//        return loginDto != null;
-//    }
 }

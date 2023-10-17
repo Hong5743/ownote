@@ -61,9 +61,10 @@
         <li><a th:href="@{/emp/adress}">주소록</a></li>
       </ul>
   </aside>
-<div class="contentContainer">
+<div class="board_wrap">
+    <div class="adress-dept">
     <p><a th:href="@{/musicContest/list}" >더보기</a></p>
-    <table class="table1">
+    <table>
         <tr>
             <th>번호</th>
             <th>사원</th>
@@ -81,6 +82,7 @@
             <td th:text="${dto.musiccontest_likes}"></td>
         </tr>
     </table>
+    </div>
 </div>
   <script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
 </body>
