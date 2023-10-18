@@ -24,16 +24,19 @@ public class MusicContestController {
     LikeService likeService;
 
     @GetMapping("/musicContest/list")
-    public String list(Model model){
+    public String list(Model model, HttpSession session){
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
         List<MusicContestDto> contestList = musicContestService.selectAllMusicContest();
         System.out.println(contestList);
         model.addAttribute("contestList", contestList);
+        model.addAttribute("authInfo", authInfo);
         return "musicContest/musicContest_list";
     }
 
     @GetMapping("/musicContest/write")
     public String insertMusicContestG(HttpSession session, Model model){
         AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        model.addAttribute("authInfo", authInfo);
         model.addAttribute("authInfo", authInfo);
         return "musicContest/musicContestWriteForm";
     }
@@ -51,6 +54,7 @@ public class MusicContestController {
         MusicContestDto dto = musicContestService.selectOneMusicContest(musiccontest_id);
         model.addAttribute("authInfo", authInfo);
         model.addAttribute("dto", dto);
+        model.addAttribute("authInfo", authInfo);
         return "musicContest/musicContest_view";
     }
 

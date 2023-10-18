@@ -106,15 +106,28 @@ body, ul, li {
     width: 1000px;
     margin: 100px auto;
 }
+.title {
+    width: 100%
+    margin: 8px 8px 8px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.board_list {
+/*.board-list-atag {
+    text-align: right;
+    margin-right: 8px;
+}*/
+
+
+.board-list {
     width: 100%;
     border-top: 2px solid #61adf6;
     border-bottom: 2px solid #61adf6;
 }
 
-.board_list > table > thead {
-    border-bottom: 10px solid #999999;
+.board-list > table > thead {
+    border-bottom: 15px solid #999999;
 }
 
 table {

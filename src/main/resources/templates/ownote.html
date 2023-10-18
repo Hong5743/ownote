@@ -12,78 +12,80 @@
     <nav id="nav2">
         <h1>Ownote</h1>
         <ul class="navbar-menu">
-            <li ><a th:if ="${authInfo == null}" th:href="@{/emp/logIn}">로그인</a></li>
+            <li><a th:if="${authInfo == null}" th:href="@{/emp/logIn}">로그인</a></li>
         </ul>
         <ul class="navbar-menu">
-            <li><a th:if ="${authInfo != null}" th:href="@{/emp/myPage}">[[${authInfo.emp_name}]]님</a></li>
-            <li><a th:if ="${authInfo != null}" th:href="@{/logout}">로그아웃</a></li>
+            <li><a th:if="${authInfo != null}" th:href="@{/emp/myPage}">[[${authInfo.emp_name}]]님</a></li>
+            <li><a th:if="${authInfo != null}" th:href="@{/logout}">로그아웃</a></li>
         </ul>
     </nav>
 </header>
-  <aside class="side-bar">
+<aside class="side-bar">
     <ul>
         <li>
-          <a th:href="@{#}"></i>인사</a>
-          <ul>
-            <li><a th:href="@{/emp/signUp}">사원등록</a></li>
-            <li><a th:href="@{#}">text2</a></li>
-            <li><a th:href="@{#}">text3</a></li>
-            <li><a th:href="@{#}">text4</a></li>
-          </ul>
+            <a th:href="@{#}"></i>인사</a>
+            <ul>
+                <li><a th:href="@{/emp/signUp}">사원등록</a></li>
+                <li><a th:href="@{#}">text2</a></li>
+                <li><a th:href="@{#}">text3</a></li>
+                <li><a th:href="@{#}">text4</a></li>
+            </ul>
         </li>
         <li>
-          <a th:href="@{#}">연차</a>
-          <ul>
-            <li><a th:href="@{#}">연차 신청 </a></li>
-            <li><a th:href="@{#}">연차 확인</a></li>
-            <li><a th:href="@{#}">연차 승인</a></li>
-            <li><a th:href="@{#}">연차 수량</a></li>
-          </ul>
+            <a th:href="@{#}">연차</a>
+            <ul>
+                <li><a th:href="@{#}">연차 신청 </a></li>
+                <li><a th:href="@{#}">연차 확인</a></li>
+                <li><a th:href="@{#}">연차 승인</a></li>
+                <li><a th:href="@{#}">연차 수량</a></li>
+            </ul>
         </li>
         <li>
-          <a th:href="@{#}">게시판</a>
-          <ul>
-            <li><a th:href="@{#}">text1</a></li>
-            <li><a th:href="@{#}">text2</a></li>
-            <li><a th:href="@{#}">text3</a></li>
-            <li><a th:href="@{#}">text4</a></li>
-          </ul>
+            <a th:href="@{#}">게시판</a>
+            <ul>
+                <li><a th:href="@{#}">text1</a></li>
+                <li><a th:href="@{#}">text2</a></li>
+                <li><a th:href="@{#}">text3</a></li>
+                <li><a th:href="@{#}">text4</a></li>
+            </ul>
         </li>
         <li>
-          <a th:href="@{#}">동아리</a>
-          <ul>
-            <li><a th:href="@{/clubinfo/list}">동아리 소개</a></li>
-            <li><a th:href="@{/club/list}">홍보 게시판</a></li>
-            <li><a th:href="@{#}">text3</a></li>
-            <li><a th:href="@{#}">text4</a></li>
-          </ul>
+            <a th:href="@{#}">동아리</a>
+            <ul>
+                <li><a th:href="@{/clubinfo/list}">동아리 소개</a></li>
+                <li><a th:href="@{/club/list}">홍보 게시판</a></li>
+                <li><a th:href="@{#}">text3</a></li>
+                <li><a th:href="@{#}">text4</a></li>
+            </ul>
         </li>
         <li><a th:href="@{/emp/adress}">주소록</a></li>
-      </ul>
-  </aside>
+    </ul>
+</aside>
 <div class="board_wrap">
-    <div class="adress-dept">
-    <p><a th:href="@{/musicContest/list}" >더보기</a></p>
-    <table>
-        <tr>
-            <th>번호</th>
-            <th>사원</th>
-            <th>부서</th>
-            <th>제목</th>
-            <th>게시일</th>
-            <th>좋아요</th>
-        </tr>
-        <tr th:each="dto : ${contestList}">
-            <td th:text="${dto.musiccontest_num}"></td>
-            <td th:text="${dto.musiccontest_emp_name}"></td>
-            <td th:text="${dto.musiccontest_dept_name}"></td>
-            <td th:text="${dto.musiccontest_title}"></td>
-            <td th:text="${#dates.format(dto.musiccontest_regdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-            <td th:text="${dto.musiccontest_likes}"></td>
-        </tr>
-    </table>
+    <div class="title">
+        <h1>이벤트 게시판</h1> <a th:href="@{/musicContest/list}">더보기</a>
+    </div>
+    <div class="board-list">
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>사원</th>
+                <th>부서</th>
+                <th>제목</th>
+                <th>좋아요</th>
+            </tr>
+            </thead>
+            <tr th:each="dto, dtoStat : ${contestList}">
+                <td th:text="${dtoStat.index + 1}"></td>
+                <td th:text="${dto.musiccontest_emp_name}"></td>
+                <td th:text="${dto.musiccontest_dept_name}"></td>
+                <td th:text="${dto.musiccontest_title}"></td>
+                <td th:text="${dto.musiccontest_likes}"></td>
+            </tr>
+        </table>
     </div>
 </div>
-  <script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
 </body>
 </html>
