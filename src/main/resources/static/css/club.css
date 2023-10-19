@@ -79,7 +79,11 @@ td:nth-child(2) {
 th:nth-child(3),
 td:nth-child(3) {
 
-    width: 500px;
+    display: block; /* 또는 display: inline-block; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 500px; /* 더 큰 값으로 조정 가능 */
 }
 
 tfoot {
@@ -89,4 +93,26 @@ tfoot {
 
 tbody tr:hover {
     background-color: #61adf6; /* 호버(마우스를 올렸을 때) 상태 배경색 설정 */
+}
+
+tfoot a {
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    color: white;
+    background-color: #61adf6;
+    border-radius:10px;
+
+}
+tfoot strong {
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    color: black;
+    background-color:white;
+    border-radius:10px;
 }

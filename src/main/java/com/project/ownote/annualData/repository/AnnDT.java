@@ -5,6 +5,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -28,5 +29,21 @@ public class AnnDT {
         query.setParameter("emp_id", emp_id); // ":emp_id" 파라미터 설정
         List<AnnData> list = query.getResultList();
         return list;
+    }
+
+    public Double selectData(int empId){
+        String sql = "SELECT a.anndata_extra FROM AnnData a WHERE a.emp_id = :empId";
+        TypedQuery<Double> query = em.createQuery(sql, Double.class);
+        query.setParameter("empId", empId);
+
+        Double result = 0.0; // result를 초기화합니다.
+
+        try {
+            result = query.getSingleResult();
+        } catch (NoResultException e) {
+            // 예외 처리 로직 추가
+        }
+
+        return result;
     }
 }

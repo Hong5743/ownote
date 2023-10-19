@@ -25,6 +25,9 @@ public class Emp {
     private String grade_name;
     private String dept_name;
 
+    public Emp(int empId, int empNum, String empPassword, String empName, String empBirth, String empEmail, String empPhone, java.sql.Date empDate, int gradeNum, int deptNum) {
+    }
+
     public void changePassword(String oldPassword, String newPassword) {
         if (!emp_password.equals(oldPassword))
             throw new WrongIdPasswordException();

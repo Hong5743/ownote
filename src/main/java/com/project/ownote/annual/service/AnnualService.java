@@ -7,10 +7,12 @@ import com.project.ownote.annual.repository.AnnualRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class AnnualService {
+
 
 
 @Autowired
@@ -38,7 +40,19 @@ public int countAnnualdate(int emp_id){
     return annualDao.countAnnualdate(emp_id);
 }
 
+    public List<AnnualDto> searchAnnualId(int emp_id) {
+        return annualDao.searchAnnualId(emp_id);}
 
 
 
+public void minusDate(int emp_id){
+    annualDao.minusDate(emp_id);
+}
+
+    public void addAnnual(int emp_id) {
+    annualDao.addAnnual(emp_id);
+    }
+public Date findDate(int emp_id){
+    return findDate(emp_id);
+}
 }

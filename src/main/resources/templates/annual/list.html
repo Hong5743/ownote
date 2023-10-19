@@ -1,65 +1,89 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/layout :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <head>
 
-<head>
+            <meta charset="UTF-8">
+            <title>annuallist</title>
+            <link href="/css/annualDataTable.css" rel="stylesheet">
+            <link href="/css/style.css" rel="stylesheet">
+        </head>
 
-    <style>
+        <body>
+        <div class="board">
+
+            <div class="board_list">
+
+                <table>
+                    <thead>
+<!--      -->
+
+                    <tr>
+                        <th>사원번호</th>
+                        <th>사원 이름</th>
+                        <th>연차 사유</th>
+                        <th>연차 시작 일</th>
+                        <th>연차 종료 일</th>
+                        <th>연차 사용 수량</th>
+                        <th>연차 종류</th>
+                        <th>진행 상황</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${annualPage.hasNoAnnualDto()}">
+                        <td colspan="7">연차 신청이 없습니다.</td>
+                    </tr>
+                    <tr th:each="obj : ${annualPage.content}">
+                        <td th:text="${obj.emp_id}"></td>
+                        <td th:text="${obj.emp_name}"></td>
+                        <td th:text="${obj.annual_content}"></td>
+                        <td th:text="${obj.annual_startdate}"></td>
+                        <td th:text="${obj.annual_enddate}"></td>
+                        <td th:text="${obj.anninfo_date}"></td>
+                        <td th:text="${obj.anninfo_name}"></td>
+                        <td>
+                            <a th:if="${obj.anncheck_id == 1}" th:href="@{'/annual/anndataModify/' + ${obj.annual_id}}" style="color: #FF5733"><b>승인 필요</b></a>
+
+                            <span th:unless="${obj.anncheck_id == 1}">완료</span>
+
+                        </td>
+
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <div th:if="${annualPage.hasAnnualDto()}">
+                        <tr>
+                            <td colspan="10">
+            <span th:if="${annualPage.currentPage > 1}">
+                <a th:href="@{'/annual/list?pageNo=' + ${annualPage.currentPage - 1}}" class="page">[이전]</a>
+            </span>
+                                <span th:each="pNo : ${#numbers.sequence(annualPage.startPage, annualPage.endPage)}">
+                <span th:if="${pNo == annualPage.currentPage}">
+                    <strong th:text="${pNo}"></strong>
+                </span>
+                <span th:unless="${pNo == annualPage.currentPage}">
+                    <a th:href="@{'/annual/list?pageNo=' + ${pNo}}" class="page">[[${pNo}]]</a>
+                </span>
+            </span>
+                                <span th:if="${annualPage.currentPage < annualPage.totalPages}">
+                <a th:href="@{'/annual/list?pageNo=' + ${annualPage.currentPage + 1}}" class="page">[다음]</a>
+            </span>
+                            </td>
+                        </tr>
+                    </div>
 
 
-    </style>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+                    </tfoot>
+                </table>
+            </div>
 
-<body>
-<table border="1">
-    <thead>
-    <tr>
-        <th>사원번호</th>
-        <th>연차 사유</th>
-        <th>연차 시작 일</th>
-        <th>연차 종료 일</th>
-        <th>연차 사용 수량</th>
-        <th>연차 종류</th>
-        <th>진행 상황</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${annualPage.hasNoAnnualDto()}">
-                <td colspan="7">연차 신청이 없습니다.</td>
-            </tr>
-    <tr th:each="obj : ${annualPage.content}">
-        <td th:text="${obj.emp_id}"></td>
-        <td th:text="${obj.annual_content}"></td>
-        <td th:text="${obj.annual_startdate}"></td>
-        <td th:text="${obj.annual_enddate}"></td>
-        <td th:text="${obj.annual_time}"></td>
-        <td th:text="${obj.anninfo_code}"></td>
-        <td>
-            <select th:if="${obj.anncheck_id == 1}" >
-                <option value="2">승인</option>
-                <option value="3">반려</option>
-            </select>
-            <span th:unless="${obj.anncheck_id == 1}" th:text="${obj.anncheck_id == 2 ? '승인' : '반려'}"></span>
-        </td>
+        </div>
 
-    </tr>
 
-<!--    <tr th:if="${annualPage.hasAnnualDto()}">-->
-<!--        <td colspan="4">-->
-<!--        <span th:if="${annualPage.startPage > 5}">-->
-<!--            <a th:href="'list?pageNo=' + ${annualPage.startPage - 5}">[이전]</a>-->
-<!--        </span>-->
-<!--            <span th:each="pNo : ${#numbers.sequence(annualPage.startPage, annualPage.endPage)}">-->
-<!--            <a th:href="'list?pageNo=' + ${pNo}" th:text="[${pNo}]"></a>-->
-<!--        </span>-->
-<!--            <span th:if="${annualPage.endPage < annualPage.totalPages}">-->
-<!--            <a th:href="'list?pageNo=' + ${annualPage.startPage + 5}">[다음]</a>-->
-<!--        </span>-->
-<!--        </td>-->
-<!--    </tr>-->
-    </tbody>
-</table>
-</body>
-
+        </body>
+    </th:block>
+</th:block>
 </html>

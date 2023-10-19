@@ -1,58 +1,127 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form th:action="@{/board/findLike}" method="post">
-    <select id="boardDivision" name="boardDivision" >
-        <option value="공지사항">공지사항</option>
-        <option value="자유게시판">자유게시판</option>
-        <option value="Q&A">Q&A</option>
-    </select>
-    <input type="text" name="find" />
-    <button type="submit">검색</button>
-</form>
-<table border="1">
-    <thead>
-    <tr>
-        <th>글 번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>등록날짜</th>
-        <th>조회수</th>
-    </tr>
-    </thead>
-    <tbody>
-    <th:block th:if="${boardList == null or boardList.isEmpty()}">
-        <tr>
-            <td colspan="5">게시글이 없습니다.</td>
-        </tr>
+<th:block th:replace="~{/layout/layout :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <head>
+            <meta charset="UTF-8">
+            <title>검색 게시판</title>
+            <link rel="stylesheet" href="/css/style.css">
+            <link rel="stylesheet" href="/css/board.css">
+        </head>
+        <body>
+
+        <div id="board-search">
+            <div class="container">
+                <div class="search-window">
+                    <form th:action="@{/board/findLike}" method="post">
+                        <div class="search-wrap">
+                            <div class="select">
+                                <select id="boardDivision" name="boardDivision">
+                                    <option value="전체">전체</option>
+                                    <option value="회사뉴스및공지">회사뉴스 및 공지</option>
+                                    <option value="자유게시판">자유게시판</option>
+                                    <option value="사내시스템/F&Q">사내시스템 / FAQ</option>
+                                </select>
+                                <select id="searchOption" name="searchOption">
+                                    <option value="전체">전체</option>
+                                    <option value="제목">제목</option>
+                                    <option value="작성자">작성자</option>
+                                    <option value="내용">내용</option>ti
+                                    <option value="제목+내용">제목+내용</option>
+                                </select>
+                            </div>
+                            <label for="search" class="blind">제목 검색</label>
+                            <input id="search" type="search" name="find" placeholder="검색어를 입력해주세요." required/>
+                            <button type="submit" class="btn btn-dark">검색</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="board_wrap">
+            <div class="title-text">
+                <div class="title_board">
+                    <strong>검색 결과</strong>
+                </div>
+            </div>
+            <div class="board_list">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>게시판</th>
+                        <th>작성자</th>
+                        <th>제목</th>
+                        <th>등록날짜</th>
+                        <th>조회수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:if="${boardPage.content == null or boardPage.content.isEmpty()}">
+                        <tr>
+                            <td colspan="5">게시글이 없습니다.</td>
+                        </tr>
+                    </th:block>
+                    <tr th:each="board : ${boardPage.content}">
+
+                        <th:block th:if="${board.boardDivision == '회사뉴스및공지'}">
+                            <th:block th:if="${board.boardImportant == 1}"><td th:text="'★중요★'" style="color: red"></td></th:block>
+                            <th:block th:if="${board.boardImportant != 1}"><td th:text="공지" ></td></th:block>
+                        </th:block>
+                        <th:block th:if="${board.boardDivision == '자유게시판'}">
+                            <td th:text="자유"></td>
+                        </th:block>
+                        <th:block th:if="${board.boardDivision == '사내시스템/F&Q'}">
+                            <th:block th:if="${board.hierarchyNum > 0}">
+                                <th:block th:if="${board.hierarchyNum % 2 == 1}"><td th:text="답변" style="color: red"></td></th:block>
+                                <th:block th:if="${board.hierarchyNum % 2 == 0}"><td th:text="재질문" style="color: deepskyblue"></td></th:block>
+                            </th:block>
+                            <th:block th:if="${board.hierarchyNum == 0}">
+                                <td th:text="'FAQ'"></td>
+                            </th:block>
+                        </th:block>
+
+                        <td th:text="${board.boardWriter}"></td>
+
+                        <th:block th:if="${board.hierarchyNum > 0}">
+                            <th:block th:if="${board.hierarchyNum % 2 == 1}"><td><a th:href = "@{/board/boardView/{boardNum}(boardNum=${board.boardNum})}" th:text="'↳'+${board.boardTitle}"></a></td></th:block>
+                            <th:block th:if="${board.hierarchyNum % 2 == 0}"><td><a th:href = "@{/board/boardView/{boardNum}(boardNum=${board.boardNum})}" th:text="'↳'+${board.boardTitle}"></a></td></th:block>
+                        </th:block>
+                        <th:block th:if="${board.hierarchyNum == 0}">
+                            <td th:text="${board.boardTitle}"></td>
+                        </th:block>
+
+                        <td th:text="${#temporals.format(board.boardRegDate, 'yyyy-MM-dd')}"></td>
+                        <td th:text="${board.boardHit}"></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                        <th:block th:if="${boardPage.hasArticles()}">
+                            <tr>
+                                <td colspan="5">
+                                    <th:block th:if="${boardPage.currentPage > 1}">
+                                        <div class="page"><a th:href = "@{/board/findLike(pageNo=${boardPage.currentPage - 1},boardDivision=${boardDivision},find=${find}, searchOption=${searchOption})}">이전</a></div>
+                                    </th:block>
+                                    <th:block th:each="pNo : ${#numbers.sequence(boardPage.startPage, boardPage.endPage)}">
+                                        <div class="page">
+                                            <a th:href="@{/board/findLike(pageNo=${pNo},boardDivision=${boardDivision},find=${find}, searchOption=${searchOption})}" th:text="${pNo}"></a>
+                                        </div>
+                                    </th:block>
+                                    <th:block th:if="${boardPage.currentPage < boardPage.totalPages}">
+                                        <div class="page"><a th:href = "@{/board/findLike(pageNo=${boardPage.currentPage + 1},boardDivision=${boardDivision},find=${find}, searchOption=${searchOption})}">다음</a></div>
+                                    </th:block>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="button" onclick="location.href='javascript:history.back();' ">뒤로가기</button>
+        </div>
+        <script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
+        </body>
     </th:block>
-    <tr th:each="board : ${boardList}">
-        <td th:text="${board.boardNum}"></td>
-        <td><a th:href = "@{/board/boardView/{boardNum}(boardNum=${board.boardNum})}" th:text="${board.boardTitle}"></a></td>
-        <td th:text="${board.boardWriter}"></td>
-        <td th:text="${#temporals.format(board.boardRegDate, 'yyyy-MM-dd')}"></td>
-        <td th:text="${board.boardHit}"></td>
-    </tr>
-    <th:block th:if="${boardPage.hasArticles()}">
-        <tr>
-            <td colspan="5">
-                <th:block th:if="${boardPage.startPage > 5}">
-                    <a th:href = "@{/board/findLike(pageNo=${boardPage.startPage - 5})}">[이전]</a>
-                </th:block>
-                <th:block th:each="pNo : ${#numbers.sequence(boardPage.startPage, boardPage.endPage)}">
-                    <a th:href="@{/board/findLike(pageNo=${pNo},boardDivision=${boardDivision},find=${find})}" th:text="${pNo}"></a>
-                </th:block>
-                <th:block th:if="${boardPage.endPage < boardPage.totalPages}">
-                    <a th:href = "@{/board/findLike(pageNo=${boardPage.startPage + 5})}">[다음]</a>
-                </th:block>
-            </td>
-        </tr>
-    </th:block>
-    </tbody>
-</table>
-</body>
+</th:block>
 </html>

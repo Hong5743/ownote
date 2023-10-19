@@ -37,4 +37,6 @@ public interface EmpMapper {
 
     public String gradeByNum(@Param("grade_num") int grade_num);
 
+    public void deleteEmp(@Param("emp_email") String emp_email);
+
 }

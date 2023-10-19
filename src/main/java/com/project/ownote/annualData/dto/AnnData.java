@@ -16,8 +16,8 @@ public class AnnData {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long  anndata_id;
 
-  private int  anndata_date;
-    private int anndata_add;
+  private double  anndata_date;
+    private double anndata_add;
     private double anndata_used;
     private double anndata_extra;
     private int emp_id;

@@ -37,7 +37,6 @@ public class MusicContestController {
     public String insertMusicContestG(HttpSession session, Model model){
         AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
         model.addAttribute("authInfo", authInfo);
-        model.addAttribute("authInfo", authInfo);
         return "musicContest/musicContestWriteForm";
     }
 
@@ -54,7 +53,6 @@ public class MusicContestController {
         MusicContestDto dto = musicContestService.selectOneMusicContest(musiccontest_id);
         model.addAttribute("authInfo", authInfo);
         model.addAttribute("dto", dto);
-        model.addAttribute("authInfo", authInfo);
         return "musicContest/musicContest_view";
     }
 

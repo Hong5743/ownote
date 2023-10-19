@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+select{
+    margin-right: 400px;
+}
+
+.write_wrap{
+    width: 1000px;
+    margin: 100px auto;
+}
+
+.title_view{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.title_view strong {
+    font-size: 1.4rem;
+}
+
+.boardTitle{
+    margin-bottom: 10px;
+}
+
+.boardDivision {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.boardContent {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    margin-top: 30px;
+    align-items: center;
+    font-size: 0;
+
+}
+
+.buttons:nth-child(1) {
+    margin-right: 670px; /* 오른쪽으로 이동 */
+}
+
+.buttons button{
+    display: inline-block;
+    min-width: 80px;
+    padding: 10px;
+    border: 1px solid #61adf6;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    margin-right: 330px;
+    background: #61adf6;
+    color: white;
+}
+
+.input_css {
+    width: 990px;
+    height: 50px;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.textarea {
+    font-size: 1.3rem;
+}
+
+/*dropdown*/
+select {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: #444;
+    background-color: #fff;
+
+    padding: 0.6em 1.4em 0.5em 0.8em;
+
+    border: 1px solid #aaa;
+    border-radius: 0.5em;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+}
+
+select:hover {
+    border-color: #888;
+}
+
+select:focus {
+    border-color: #aaa;
+    color: #222;
+    outline: none;
+}
+/*dropdown*/
+
+.checkbox {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    margin-left: 170px;
+}
+
+.checkbox-text {
+    font-size: 1.3rem;
+}

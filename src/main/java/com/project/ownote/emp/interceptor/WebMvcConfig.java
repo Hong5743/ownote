@@ -23,10 +23,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(loggerInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/emp/logIn")
-/*                .excludePathPatterns("/emp/signUp")*/
                 .excludePathPatterns("/")
                 .excludePathPatterns("/css/**")
+                .excludePathPatterns("/image/**")
                 .excludePathPatterns("/js/**")
-                .excludePathPatterns("//code.jquery.com/jquery-3.6.0.min.js");
+                .excludePathPatterns("/layout/**");
     }
 }

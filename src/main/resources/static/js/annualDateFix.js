@@ -16,3 +16,4 @@ document.getElementById('annual_startdate').addEventListener('change', function 
     document.getElementById('annual_enddate').min = selectedFormattedDate;
 });
 
+

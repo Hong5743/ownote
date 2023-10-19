@@ -31,7 +31,7 @@
                         <td th:text="${obj.empName}"></td>
                         <td th:text="${obj.gradeName}"></td>
                         <td th:text="${obj.deptName}"></td>
-                        <td th:text="${obj.empEmail}"></td>
+                        <td><a th:href="@{'/emp/view?emp_email=' + ${obj.empEmail}}">[[${obj.empEmail}]]</a></td>
                     </tr>
                     <tfoot>
                     <div class="adress-dept-page" th:if="${listPage.hasEmpAdressDtos()}">

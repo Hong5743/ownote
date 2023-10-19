@@ -1,63 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/layout :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
 <head>
     <meta charset="UTF-8">
     <title>list</title>
     <link href="/css/club.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/button.css" rel="stylesheet">
 </head>
 <body>
-<header>
-    <nav id="nav2">
-        <h1>Ownote</h1>
-        <ul class="navbar-menu">
-            <li> <a th:href="@{emp/logIn}" >로그인</a> </li>
-            <li> <a href="">로그아웃</a> </li>
-        </ul>
-    </nav>
-</header>
-<aside class="side-bar">
-    <ul>
-        <li>
-            <a th:href="@{#}"></i>인사</a>
-            <ul>
-                <li><a th:href="@{/emp/signUp}">사원등록</a></li>
-                <li><a th:href="@{#}">text2</a></li>
-                <li><a th:href="@{#}">text3</a></li>
-                <li><a th:href="@{#}">text4</a></li>
-            </ul>
-        </li>
-        <li>
-            <a th:href="@{#}">연차</a>
-            <ul>
-                <li><a th:href="@{#}">연차 신청 </a></li>
-                <li><a th:href="@{#}">연차 확인</a></li>
-                <li><a th:href="@{#}">연차 승인</a></li>
-                <li><a th:href="@{#}">연차 수량</a></li>
-            </ul>
-        </li>
-        <li>
-            <a th:href="@{#}">게시판</a>
-            <ul>
-                <li><a th:href="@{#}">text1</a></li>
-                <li><a th:href="@{#}">text2</a></li>
-                <li><a th:href="@{#}">text3</a></li>
-                <li><a th:href="@{#}">text4</a></li>
-            </ul>
-        </li>
-        <li>
-            <a th:href="@{#}">동아리</a>
-            <ul>
-                <li><a th:href="@{/clubinfo/list}">동아리 소개</a></li>
-                <li><a th:href="@{/club/list}">홍보 게시판</a></li>
-                <li><a th:href="@{#}">text3</a></li>
-                <li><a th:href="@{#}">text4</a></li>
-            </ul>
-        </li>
-        <li><a th:href="@{/emp/adress}">주소록</a></li>
-    </ul>
-</aside>
-<script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
+
 <div class="board_wrap">
     <div class="title-text">
         <div class="title_board">
@@ -85,27 +38,7 @@
         </tbody>
 
         <tfoot>
-<!--            <div th:if="${listPage.hasClubBoardDtos()}">-->
-<!--                <tr>-->
-<!--                    <td colspan="10">-->
-<!--            <span th:if="${listPage.startPage > 1}">-->
-<!--                <a th:href="@{'/club/list?pageNo=' + (${listPage.startPage - 1})}">[이전]</a>-->
-<!--            </span>-->
-<!--                        <span th:each="pNo : ${#numbers.sequence(listPage.startPage, listPage.endPage)}">-->
-<!--                <span th:if="${pNo == listPage.currentPage}">-->
-<!--                    <strong th:text="${pNo}"></strong>-->
-<!--                </span>-->
-<!--                <span th:unless="${pNo == listPage.currentPage}">-->
-<!--                    <a href="/club/list?pageNo=${pNo}"></a>-->
-<!--                </span>-->
-<!--            </span>-->
-<!--                        <span th:if="${listPage.endPage < listPage.totalPages}">-->
-<!--                <a href="/club/list?pageNo=${listPage.endPage + 1}">[다음]</a>-->
-<!--            </span>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--            </div>-->
-            <div th:if="${listPage.hasClubBoardDtos()}">
+            <div class="board-list-page" th:if="${listPage.hasClubBoardDtos()}">
                 <tr>
                     <td colspan="10">
             <span th:if="${listPage.currentPage > 1}">
@@ -128,10 +61,18 @@
         </tfoot>
     </table>
     </div>
+<div class="container">
+    <div class="button-effect">
 
-    <div class="buttons">
-        <a class="button-writego" th:href="@{'/club/write'}">게시글쓰기</a>
+            <a class="effect effect-1" th:href="@{'/club/write'}">게시글쓰기</a>
     </div>
+<!--    <div class="buttons">-->
+<!--        <a class="button-writego" th:href="@{'/club/write'}">게시글쓰기</a>-->
+<!--    </div>-->
 </div>
+</div>
+
 </body>
+    </th:block>
+</th:block>
 </html>

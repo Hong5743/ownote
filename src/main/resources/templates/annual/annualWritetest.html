@@ -5,7 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+
 <div id="write">
+    <div th:if="${#session.emp_id == emp_id}">
+
     <form th:action="@{/annual/write}" method="post">
 
         <p>
@@ -36,6 +39,7 @@
 
         <input type="submit" value="연차 신청">
     </form>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/annualDateFix.js"></script>

@@ -20,7 +20,7 @@ public class EmpAdressController {
 
     @Autowired
     private EmpAdressService empAdressService;
-    private int size = 10;
+    private int size = 5;
 
     public EmpAdressPage getEmpAdressPage(int pageNum, int pageSize) {
         int total = empAdressService.countEmpAdress();// 전체 사용자 수 조회
