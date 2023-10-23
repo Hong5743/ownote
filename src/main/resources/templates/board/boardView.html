@@ -35,19 +35,19 @@
                 <textarea class="textarea" th:text="${board.boardContent}" readonly="readonly" cols="97" rows="25" style="resize: none;"></textarea>
             </label>
         </div>
-    <div class="buttons">
+    <div class="buttons" th:if="${authInfo != null}">
         <button type="button" onclick="location.href='javascript:history.back();' ">뒤로가기</button>
         <th:block th:if="${mainCheck != '1'}">
-            <th:block th:if="${emp.emp_id == board.empId}">
+            <th:block th:if="${authInfo.emp_id == board.empId}">
                 <button type="button" th:onclick="|location.href='@{/board/boardupdate/{boardNum}(boardNum=${board.boardNum})}'|">수정하기</button>
             </th:block>
-            <th:block th:if="${emp.emp_id == board.empId or emp.dept_num == 40}">
+            <th:block th:if="${authInfo.emp_id == board.empId or authInfo.dept_num == 40}">
                 <button type="button" th:class="deleteBoard" th:data-boardNum="${board.boardNum}" th:data-boardDivision="${board.boardDivision}">삭제하기</button>
             </th:block>
-            <th:block th:if="${board.boardDivision == '사내시스템/F&Q' and (board.hierarchyNum % 2 == 0) and (emp.dept_num == 30 or emp.dept_num == 40) and board.hierarchyNum == maxHierarchynum and emp.emp_id != board.empId}">
+            <th:block th:if="${board.boardDivision == '사내시스템/F&Q' and (board.hierarchyNum % 2 == 0) and (authInfo.dept_num == 30 or authInfo.dept_num == 40) and board.hierarchyNum == maxHierarchynum and authInfo.emp_id != board.empId}">
                 <button type="button" th:onclick="|location.href='@{/board/replywrite/{boardNum}(boardNum=${board.boardNum})}'|">답변하기</button>
             </th:block>
-            <th:block th:if="${board.boardDivision == '사내시스템/F&Q' and (board.hierarchyNum % 2 == 1) and emp.emp_id == board.PEmpId and board.hierarchyNum == maxHierarchynum and emp.emp_id != board.empId}">
+            <th:block th:if="${board.boardDivision == '사내시스템/F&Q' and (board.hierarchyNum % 2 == 1) and authInfo.emp_id == board.PEmpId and board.hierarchyNum == maxHierarchynum and authInfo.emp_id != board.empId}">
                 <button type="button" th:onclick="|location.href='@{/board/replywrite/{boardNum}(boardNum=${board.boardNum})}'|">질문하기</button>
             </th:block>
         </th:block>

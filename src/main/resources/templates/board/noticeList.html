@@ -90,8 +90,8 @@
                     </tfoot>
                 </table>
             </div>
-            <div class="buttons">
-                <th:block th:if="${emp.grade_num >= 3 or emp.dept_num == 40}">
+            <div class="buttons" th:if="${authInfo != null}">
+                <th:block th:if="${authInfo.grade_num >= 3 or authInfo.dept_num == 40}">
                     <button type="button" th:onclick="|location.href='@{/board/boardwriteform}'|">글쓰기</button>
                 </th:block>
             </div>

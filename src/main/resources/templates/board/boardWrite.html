@@ -24,7 +24,7 @@
                     <strong>작성자</strong>
                     <br>
                     <label>
-                        <input class="input_css" type="text" name="boardWriter" th:value="${emp.emp_name}" readonly="readonly"/>
+                        <input class="input_css" type="text" name="boardWriter" th:value="${authInfo.emp_name}" readonly="readonly"/>
                     </label>
                 </div>
                 <hr>
@@ -32,13 +32,13 @@
                     <strong>작성할 게시판</strong>
                     <br>
                     <select id="boardDivision" name="boardDivision" style="font-weight: bold">
-                        <th:block th:if="${emp.grade_num >= 3 or emp.dept_num == 40}">
+                        <th:block th:if="${authInfo.grade_num >= 3 or authInfo.dept_num == 40}">
                             <option value="회사뉴스및공지">회사뉴스 및 공지</option>
                         </th:block>
                         <option value="자유게시판">자유게시판</option>
                         <option value="사내시스템/F&Q">사내시스템 / FAQ</option>
                     </select>
-                    <th:block th:if="${emp.grade_num >= 3 or emp.dept_num == 40}">
+                    <th:block th:if="${authInfo.grade_num >= 3 or authInfo.dept_num == 40}">
                         <label>
                             <input class="checkbox" type="checkbox" name="boardImportant" id="boardImportant">
                             <strong class="checkbox-text">회사뉴스 및 공지 중요!</strong>
@@ -54,7 +54,7 @@
                         </label>
                 </div>
             </div>
-            <div class="buttons">
+            <div class="buttons" th:if="${authInfo != null}">
                 <button type="button" onclick="location.href='javascript:history.back();' ">뒤로가기</button>
                 <button type="submit" id="submit1">글 등록</button>
             </div>

@@ -6,7 +6,6 @@ import com.project.ownote.emp.login.dto.Emp;
 import com.project.ownote.emp.login.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,10 +32,14 @@ public class LoginController {
     public String PostLogin(@RequestParam("emp_email") String emp_email, @RequestParam("emp_password") String emp_password, HttpSession session) {
         String email = emp_email;
         AuthInfo authInfo = authService.authenticate(email, emp_password);
-            System.out.println("------------------------------" + authInfo);
-            session.setAttribute("authInfo", authInfo);
-            Emp emp = empMapper.selectByEmail(email);
+        System.out.println("------------------------------" + authInfo);
+        session.setAttribute("authInfo", authInfo);
+        Emp emp = empMapper.selectByEmail(email);
+        if(authInfo.getEmp_name() == "error999") {
+            return "false";
+        }else {
             return "success";
+        }
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

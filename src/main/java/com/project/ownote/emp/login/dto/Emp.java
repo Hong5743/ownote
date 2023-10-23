@@ -42,4 +42,7 @@ public class Emp {
     }
     public boolean matchPassword(String password) {
         return this.emp_password.equals(password);}
+
+    public boolean matchEmail(String email) {
+        return this.emp_email.equals(email);}
 }

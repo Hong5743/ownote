@@ -29,6 +29,10 @@
     </insert>
 
     <select id="selectLike" resultType="com.project.ownote.musicContest.dto.LikeDto">
-        select * from musiccontest_like where musiccontest_id = #{musiccontest_id}
+        select * from musiccontest where musiccontest_id = #{musiccontest_id}
+    </select>
+
+    <select id="selectLikeEmp" resultType="com.project.ownote.musicContest.dto.LikeDto">
+        select * from musiccontest_like where emp_id = #{emp_id}
     </select>
 </mapper>
