@@ -1,4 +1,4 @@
-# ownote
+![image](https://github.com/Hong5743/ownote/assets/136396772/35ed307b-2eba-4c9f-ba06-afe317a6f096)# ownote
 <div>
   <h1>제 2차 팀 프로젝트</h1>
   <h2>기간: 2023.09.18 ~ 2023.10.20</h2>
@@ -117,5 +117,9 @@
     <td>최종 발표자료 작성</td>
   </tr>
 </table>
+
+## 기술 스택 및 개발 도구
+![image](https://github.com/Hong5743/ownote/assets/136396772/7beb39b0-c98f-4b13-bf34-54621f46a807)
+![image](https://github.com/Hong5743/ownote/assets/136396772/730bac25-83af-4820-8702-4c966e525c80)
 
 
