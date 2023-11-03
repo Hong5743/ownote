@@ -122,7 +122,8 @@
 ![image](https://github.com/Hong5743/ownote/assets/136396772/3fa03e47-ba5d-4613-a2a1-4e99ce07dd8c)
 
 ## DB설계(ERD)
-![image](https://github.com/Hong5743/ownote/assets/136396772/b5ca7ed5-ec1b-4961-a0da-515409430f6b)
+![image](https://github.com/Hong5743/ownote/assets/136396772/9d6cc5f1-b41c-4d58-8207-68da54464945)
+
 
 
 
