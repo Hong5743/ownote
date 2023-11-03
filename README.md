@@ -124,6 +124,12 @@
 ## DB설계(ERD)
 ![image](https://github.com/Hong5743/ownote/assets/136396772/9d6cc5f1-b41c-4d58-8207-68da54464945)
 
+## 개발한 기능
+#### 로그인
+#### 주소록
+#### [인사팀]사원등록
+#### 메인 이벤트 게시판
+#### Layout CSS
 
 
 
