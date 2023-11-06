@@ -118,12 +118,6 @@
   </tr>
 </table>
 
-## 기술 스택 및 개발 도구
-![image](https://github.com/Hong5743/ownote/assets/136396772/3fa03e47-ba5d-4613-a2a1-4e99ce07dd8c)
-
-## DB설계(ERD)
-![image](https://github.com/Hong5743/ownote/assets/136396772/9d6cc5f1-b41c-4d58-8207-68da54464945)
-
 ## 개발한 기능
 #### 로그인
 #### 사원 주소록
@@ -131,6 +125,17 @@
 #### [인사팀]사원등록
 #### 메인 이벤트 게시판
 #### Layout CSS
+
+## 프로젝트 DB설계(ERD)
+![image](https://github.com/Hong5743/ownote/assets/136396772/9d6cc5f1-b41c-4d58-8207-68da54464945)
+
+## 기술 스택 및 개발 도구
+![image](https://github.com/Hong5743/ownote/assets/136396772/3fa03e47-ba5d-4613-a2a1-4e99ce07dd8c)
+
+## 구현 결과 및 영상
+### 아래 드라이브 링크에 요약 보고서랑 PPT 파일이 담겨있습니다.
+### https://drive.google.com/drive/folders/1rn8oteKmAOam3FKqFmBkkUdQO9pTmF3s
+
 
 
 
