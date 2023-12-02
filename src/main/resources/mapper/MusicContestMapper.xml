@@ -13,7 +13,8 @@
     </select>
 
     <insert id="insertMusicContest" parameterType="com.project.ownote.musicContest.dto.MusicContestDto">
-        insert into musiccontest (musiccontest_id, musiccontest_num, musiccontest_emp_name, musiccontest_dept_name, musiccontest_title, musiccontest_content, musiccontest_regdate, musiccontest_likes) values (#{musiccontest_id}, #{musiccontest_num}, #{musiccontest_emp_name}, #{musiccontest_dept_name}, #{musiccontest_title}, #{musiccontest_content}, now(), #{musiccontest_likes})
+        insert into musiccontest (musiccontest_id, musiccontest_num, musiccontest_emp_name, musiccontest_dept_name, musiccontest_title, musiccontest_content, musiccontest_regdate, musiccontest_likes) 
+        values (#{musiccontest_id}, #{musiccontest_num}, #{musiccontest_emp_name}, #{musiccontest_dept_name}, #{musiccontest_title}, #{musiccontest_content}, now(), #{musiccontest_likes})
     </insert>
 
     <delete id="deleteMusicContest">
