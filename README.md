@@ -18,8 +18,38 @@ Front: HTML, CSS3, JS<br>
   <img src="https://github.com/Hong5743/ownote/assets/136396772/9d6cc5f1-b41c-4d58-8207-68da54464945" width="600" height="400" alt="ERD"/>
 </details>
 
-## 개발한 기능
-#### 로그인
+## 4. 구현 기능
+<details>
+  <summary>1. 사원 등록</summary>
+  <img src="https://github.com/Hong5743/ownote/assets/136396772/52134a52-e24b-4d33-b604-0c9b0c590b99" width="600" height="400" alt="사원 등록"/>
+  Http 메소드 중 하나인 Post 메소드를 사용하여 입력한 데이터들이 DB에 Insert 되도록 설계하였습니다.
+
+  ```
+@RequestMapping(value = "/emp/logIn", method = RequestMethod.POST)
+    public String postSignUp(@ModelAttribute SignUpDto signUpDto, RedirectAttributes redirectAttributes) {
+        try {
+            Integer emp_num = signUpDto.getEmp_num();
+            if (emp_num == null) {
+                signUpDto.setEmp_num(currentEmpNum);
+            }
+            if (!signUpDto.getEmp_email().contains("@")) {
+                signUpDto.setEmp_email(signUpDto.getEmp_email() + "@ownote.com");
+            } else {
+                redirectAttributes.addFlashAttribute("error", "영문 숫자 조합만 입력이 가능합니다.");
+            }
+            signUpService.insertEmp(signUpDto);
+            return "/emp/loginForm";
+        } catch (Exception e) {
+            // 회원가입 실패 처리
+            redirectAttributes.addFlashAttribute("error", "회원가입에 실패했습니다. 다시 시도해주세요.");
+            return "redirect:/emp/signUp";
+        }
+    }
+```
+
+
+  
+</details> 
 #### 사원 주소록
 #### 사원 마이 페이지
 #### [인사팀]사원등록
