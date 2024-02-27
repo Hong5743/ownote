@@ -50,7 +50,7 @@ Front: HTML, CSS3, JS<br>
   
 </details> 
 
-<detials>
+<details>
   <summary>2. 로그인</summary>
   <img src="https://github.com/Hong5743/ownote/assets/136396772/6a395282-984e-4db3-8060-9984f837c8d2" width="600" height="400" alt="로그인"/>
 
@@ -83,7 +83,7 @@ public AuthInfo authenticate(String email, String password) {
 ```
 
 서비스 컨트롤러 코드를 거쳐 로그인에 성공하면 서비스 코드에서 작성한 AuthInfo로 변수를 설정하여 세션으로 등록하도록 하였습니다.
-</detials>
+</details>
 
 <details>
   <summary>3. 사원 주소록</summary>
@@ -128,7 +128,7 @@ public AuthInfo authenticate(String email, String password) {
 </details>
 <details>
   <summary>5. 이벤트 게시판</summary>
-  <img src="https://github.com/Hong5743/ownote/assets/136396772/e3194130-bd8a-444f-ab01-40d0ae31c3b5" width="600" height="400" alt="이벤트 게시판"/>
+  <img src="https://github.com/Hong5743/ownote/assets/136396772/e3194130-bd8a-444f-ab01-40d0ae31c3b5" width="600" height="400" alt="이벤트 게시판"/><br>
   
 매달 각 부서별로 이벤트 게시판에 이벤트 참여 게시글을 올리고 좋아요를 가장 많이 받는 부서에 회식비 지원이 나가는 이벤트를 진행합니다. 글쓰기를 누르면 이벤트 참여 게시글을 작성 할 수 있으며 좋아요 순으로 순위가 나뉘게 때문에 수정은 불가하고 삭제만 가능하게 만들었습니다.
 <br>
