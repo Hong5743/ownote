@@ -49,6 +49,7 @@ Front: HTML, CSS3, JS<br>
 ```
   
 </details> 
+
 <detials>
   <summary>2. 로그인</summary>
   <img src="https://github.com/Hong5743/ownote/assets/136396772/6a395282-984e-4db3-8060-9984f837c8d2" width="600" height="400" alt="로그인"/>
@@ -83,6 +84,7 @@ public AuthInfo authenticate(String email, String password) {
 
 서비스 컨트롤러 코드를 거쳐 로그인에 성공하면 서비스 코드에서 작성한 AuthInfo로 변수를 설정하여 세션으로 등록하도록 하였습니다.
 </detials>
+
 <details>
   <summary>3. 사원 주소록</summary>
   <img src="https://github.com/Hong5743/ownote/assets/136396772/964f51b2-945b-49c0-b079-51b5c5998de6" width="600" height="400" alt="사원 주소록"/>
