@@ -132,7 +132,7 @@ public AuthInfo authenticate(String email, String password) {
   
 매달 각 부서별로 이벤트 게시판에 이벤트 참여 게시글을 올리고 좋아요를 가장 많이 받는 부서에 회식비 지원이 나가는 이벤트를 진행합니다. 글쓰기를 누르면 이벤트 참여 게시글을 작성 할 수 있으며 좋아요 순으로 순위가 나뉘게 때문에 수정은 불가하고 삭제만 가능하게 만들었습니다.
 <br>
-<img src="(https://github.com/Hong5743/ownote/assets/136396772/5c043580-2ecb-4436-a69f-6e00b2a42e15" width="600" height="400" alt="이벤트 게시판 작성"/>
+<img src="https://github.com/Hong5743/ownote/assets/136396772/5c043580-2ecb-4436-a69f-6e00b2a42e15" width="600" height="400" alt="이벤트 게시판 작성"/>
 
 ```
  @GetMapping("/musicContest/write")
